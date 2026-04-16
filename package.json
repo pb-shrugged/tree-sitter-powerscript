@@ -30,15 +30,15 @@
     "*.wasm"
   ],
   "dependencies": {
-    "node-addon-api": "^8.3.1",
+    "node-addon-api": "^8.5.0",
     "node-gyp-build": "^4.8.4"
   },
   "devDependencies": {
-    "eslint": "^9.35.0",
-    "eslint-config-treesitter": "^1.0.2",
     "prebuildify": "^6.0.1",
     "tree-sitter": "^0.25.0",
-    "tree-sitter-cli": "^0.26.7"
+    "tree-sitter-cli": "^0.26.7",
+    "eslint": "^9.35.0",
+    "eslint-config-treesitter": "^1.0.2"
   },
   "peerDependencies": {
     "tree-sitter": "^0.25.0"
@@ -50,7 +50,6 @@
   },
   "scripts": {
     "install": "node-gyp-build",
-    "lint": "eslint grammar.js",
     "prestart": "tree-sitter build --wasm",
     "start": "tree-sitter playground",
     "test": "node --test bindings/node/*_test.js",
@@ -59,6 +58,7 @@
     "ts:run": "tree-sitter build --wasm && tree-sitter playground -q",
     "ts:test": "tree-sitter test",
     "ts:parse:playground": "npm run ts:generate && tree-sitter parse ./examples/playground.srf",
+    "lint": "eslint grammar.js",
     "lint:fix": "eslint grammar.js --fix"
   }
 }
