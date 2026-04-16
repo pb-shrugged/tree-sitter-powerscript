@@ -1,24 +1,28 @@
-const assert = require('node:assert');
-const { test } = require('node:test');
+import assert from "node:assert";
+import { test } from "node:test";
+import Parser from "tree-sitter";
 
-const Parser = require('tree-sitter');
-const PowerscriptLanguage = require('./index');
+import fs from "node:fs";
+import path from "node:path";
 
-const fs = require('node:fs');
-const path = require('node:path');
-
-test('can load grammar', () => {
+test("can load grammar", () => {
   const parser = new Parser();
-  assert.doesNotThrow(() => parser.setLanguage(PowerscriptLanguage));
+  assert.doesNotReject(async () => {
+    const { default: language } = await import("./index.js");
+    parser.setLanguage(language);
+  });
 });
 
-test('can parse ../../examples/playground.srf', () => {
+test('can parse ../../examples/playground.srf', async () => {
   const parser = new Parser();
-  assert.doesNotThrow(() => parser.setLanguage(PowerscriptLanguage));
 
-  const filePath = path.join(__dirname, '../../examples/playground.srf');
+  const { default: language } = await import("./index.js");
+  parser.setLanguage(language);
+
+  const filePath = path.join('./examples/playground.srf');
   const fileText = fs.readFileSync(filePath, 'utf8');
   const tree = parser.parse(fileText, null);
 
   assert.equal(tree.rootNode.type, 'source_file');
+
 });
