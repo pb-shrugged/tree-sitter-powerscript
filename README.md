@@ -1,6 +1,6 @@
 # tree-sitter-powerscript
 
-A [Tree-sitter](https://tree-sitter.github.io/tree-sitter/) grammar for powerscript.
+Powerscript grammar for [Tree-sitter](https://tree-sitter.github.io/tree-sitter/).
 
 ## Supported File Types
 
