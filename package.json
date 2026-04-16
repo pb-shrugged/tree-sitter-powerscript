@@ -1,6 +1,6 @@
 {
   "name": "@pb-shrugged/tree-sitter-powerscript",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Powerscript grammar for tree-sitter",
   "type": "module",
   "repository": {
