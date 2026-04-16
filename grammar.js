@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-spacing */
 /**
- * @file Powerbuilder grammar for tree-sitter
+ * @file Powerscript grammar for tree-sitter
  * @author Jose Cagnini
  * @license MIT
  */
@@ -27,7 +27,7 @@ const PREC = {
 
 
 module.exports = grammar({
-  name: 'powerbuilder',
+  name: 'powerscript',
 
   word: $ => $.identifier,
 

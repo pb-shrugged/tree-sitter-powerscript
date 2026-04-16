@@ -1,7 +1,7 @@
 
 ---
 name: Feature Request
-about: Suggest a new PowerBuilder language feature for the grammar
+about: Suggest a new powerscript language feature for the grammar
 title: '[FEATURE] '
 labels: enhancement
 assignees: ''
@@ -9,12 +9,12 @@ assignees: ''
 
 ## Feature Description
 
-A clear and concise description of the PowerBuilder language feature you'd like to see supported.
+A clear and concise description of the powerscript language feature you'd like to see supported.
 
-## PowerBuilder Code Example
+## Powerscript Code Example
 
-```powerbuilder
-// Provide an example of the PowerBuilder code that should be parsed
+```powerscript
+// Provide an example of the powerscript code that should be parsed
 ```
 
 ## Use Case

@@ -2,10 +2,10 @@
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
   "grammars": [
     {
-      "name": "powerbuilder",
-      "camelcase": "PowerBuilder",
-      "title": "Powerbuilder",
-      "scope": "source.powerbuilder",
+      "name": "powerscript",
+      "camelcase": "Powerscript",
+      "title": "Powerscript",
+      "scope": "source.powerscript",
       "file-types": [
         "srs",
         "srf",
@@ -14,21 +14,21 @@
         "sra",
         "srm"
       ],
-      "injection-regex": "^powerbuilder$",
-      "class-name": "TreeSitterPowerbuilder"
+      "injection-regex": "^powerscript$",
+      "class-name": "TreeSitterPowerscript"
     }
   ],
   "metadata": {
     "version": "0.0.1",
     "license": "MIT",
-    "description": "Powerbuilder grammar for tree-sitter",
+    "description": "Powerscript grammar for tree-sitter",
     "authors": [
       {
         "name": "Jose Cagnini"
       }
     ],
     "links": {
-      "repository": "https://github.com/tree-sitter/tree-sitter-powerbuilder"
+      "repository": "https://github.com/pb-shrugged/tree-sitter-powerscript"
     }
   },
   "bindings": {

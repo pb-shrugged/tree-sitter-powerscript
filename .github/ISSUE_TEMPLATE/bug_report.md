@@ -1,7 +1,7 @@
 
 ---
 name: Bug Report
-about: Create a report to help us improve the PowerBuilder grammar
+about: Create a report to help us improve the powerscript grammar
 title: '[BUG] '
 labels: bug
 assignees: ''
@@ -11,10 +11,10 @@ assignees: ''
 
 A clear and concise description of what the bug is.
 
-## PowerBuilder Code Sample
+## Powerscript Code Sample
 
-```powerbuilder
-// Paste the PowerBuilder code that causes the issue here
+```powerscript
+// Paste the powerscript code that causes the issue here
 ```
 
 ## Expected Behavior
@@ -36,7 +36,7 @@ If applicable, paste the tree-sitter parse output or error message:
 ## Environment
 
 - Tree-sitter version: 
-- tree-sitter-powerbuilder version: 
+- tree-sitter-powerscript version: 
 - Operating System: 
 - Node.js version (if applicable): 
 

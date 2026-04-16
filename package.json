@@ -1,8 +1,8 @@
 {
-  "name": "@pb-shrugged/tree-sitter-powerbuilder",
+  "name": "@pb-shrugged/tree-sitter-powerscript",
   "version": "0.0.1",
-  "description": "Powerbuilder grammar for tree-sitter",
-  "repository": "https://github.com/pb-shrugged/tree-sitter-powerbuilder",
+  "description": "Powerscript grammar for tree-sitter",
+  "repository": "https://github.com/pb-shrugged/tree-sitter-powerscript",
   "license": "MIT",
   "author": {
     "name": "Jose Cagnini"
@@ -13,7 +13,8 @@
     "incremental",
     "parsing",
     "tree-sitter",
-    "powerbuilder"
+    "powerbuilder",
+    "powerscript"
   ],
   "files": [
     "grammar.js",

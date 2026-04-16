@@ -3,9 +3,9 @@ const { test } = require("node:test");
 
 const Parser = require("tree-sitter");
 
-const PowerBuilderLanguage = require("./index")
+const PowerscriptLanguage = require("./index")
 
 test("can load grammar", () => {
   const parser = new Parser();
-  assert.doesNotThrow(() => parser.setLanguage(PowerBuilderLanguage));
+  assert.doesNotThrow(() => parser.setLanguage(PowerscriptLanguage));
 });
