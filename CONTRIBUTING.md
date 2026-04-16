@@ -1,7 +1,7 @@
 
-# Contributing to tree-sitter-powerbuilder
+# Contributing to tree-sitter-powerscript
 
-Thank you for your interest in contributing to the PowerBuilder grammar for Tree-sitter! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to the powerscript grammar for Tree-sitter! This document provides guidelines and information for contributors.
 
 ## Table of Contents
 
@@ -27,8 +27,8 @@ Thank you for your interest in contributing to the PowerBuilder grammar for Tree
 1. Fork the repository
 2. Clone your fork:
    ```bash
-   git clone https://github.com/your-username/tree-sitter-powerbuilder.git
-   cd tree-sitter-powerbuilder
+   git clone https://github.com/your-username/tree-sitter-powerscript.git
+   cd tree-sitter-powerscript
    ```
 
 3. Install dependencies:
@@ -51,7 +51,7 @@ Thank you for your interest in contributing to the PowerBuilder grammar for Tree
 
 ### Understanding the Grammar
 
-The PowerBuilder grammar is defined in `grammar.js`. This file contains the rules that define how PowerBuilder code should be parsed.
+The powerscript grammar is defined in `grammar.js`. This file contains the rules that define how powerscript code should be parsed.
 
 ### Key Grammar Concepts
 
@@ -77,7 +77,7 @@ The PowerBuilder grammar is defined in `grammar.js`. This file contains the rule
 
 ### Grammar Best Practices
 
-- Use descriptive rule names that reflect PowerBuilder terminology
+- Use descriptive rule names that reflect powerscript terminology
 - Add comments to explain complex rules
 - Consider performance implications of recursive rules
 - Handle edge cases and error recovery
@@ -109,7 +109,7 @@ When adding new grammar features:
    Test name
    ================================================================================
 
-   PowerBuilder code here
+   powerscript code here
 
    --------------------------------------------------------------------------------
 
@@ -118,12 +118,12 @@ When adding new grammar features:
 
 3. Run tests to verify your changes work correctly
 
-### Testing with Real PowerBuilder Code
+### Testing with real powerscript code
 
-Test your grammar changes with real PowerBuilder code:
+Test your grammar changes with real powerscript code:
 
 ```bash
-# Parse a PowerBuilder file
+# Parse a powerscript file
 tree-sitter parse path/to/file.sru
 
 # Parse and show the syntax tree
@@ -142,7 +142,7 @@ tree-sitter parse path/to/file.sru --debug
 2. Make your changes and commit them:
    ```bash
    git add .
-   git commit -m "feat: add support for new PowerBuilder feature"
+   git commit -m "feat: add support for new powerscript feature"
    ```
 
 3. Push to your fork:
@@ -213,10 +213,10 @@ git push && git push --tags
 - Use discussions for questions and ideas
 - Check existing issues and PRs before creating new ones
 
-## PowerBuilder Resources
+## Powerscript Resources
 
 - [PowerBuilder Documentation](https://docs.appeon.com/pb2022/)
-- [PowerBuilder Language Reference](https://docs.appeon.com/pb2022/powerscript_reference/)
+- [Powerscript Language Reference](https://docs.appeon.com/pb2022/powerscript_reference/)
 - [Tree-sitter Documentation](https://tree-sitter.github.io/tree-sitter/)
 
-Thank you for contributing to tree-sitter-powerbuilder!
+Thank you for contributing to tree-sitter-powerscript!

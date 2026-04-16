@@ -1,6 +1,6 @@
-# tree-sitter-powerbuilder
+# tree-sitter-powerscript
 
-A [Tree-sitter](https://tree-sitter.github.io/tree-sitter/) grammar for PowerBuilder.
+A [Tree-sitter](https://tree-sitter.github.io/tree-sitter/) grammar for powerscript.
 
 ## Supported File Types
 
@@ -16,7 +16,7 @@ A [Tree-sitter](https://tree-sitter.github.io/tree-sitter/) grammar for PowerBui
 ### As a npm package on your project
 
 ```bash
-npm install tree-sitter-powerbuilder
+npm install tree-sitter-powerscript
 ```
 
 ### Usage with Tree-sitter CLI
@@ -26,8 +26,8 @@ npm install tree-sitter-powerbuilder
 npm install -g tree-sitter-cli
 
 # Clone this repository
-git clone https://github.com/pb-shrugged/tree-sitter-powerbuilder.git
-cd tree-sitter-powerbuilder
+git clone https://github.com/pb-shrugged/tree-sitter-powerscript.git
+cd tree-sitter-powerscript
 
 # Generate the parser
 tree-sitter generate
@@ -35,7 +35,7 @@ tree-sitter generate
 # Test the parser
 tree-sitter test
 
-# Parse a PowerBuilder file
+# Parse a powerscript file
 tree-sitter parse path/to/your/file.sru
 ```
 
@@ -45,10 +45,10 @@ tree-sitter parse path/to/your/file.sru
 
 ```javascript
 const Parser = require('tree-sitter');
-const PowerBuilder = require('tree-sitter-powerbuilder');
+const Powerscript = require('tree-sitter-powerscript');
 
 const parser = new Parser();
-parser.setLanguage(PowerBuilder);
+parser.setLanguage(Powerscript);
 
 const sourceCode = `
 global type w_main from window
@@ -73,8 +73,8 @@ console.log(tree.rootNode.toString());
 ### Setup
 
 ```bash
-git clone https://github.com/pb-shrugged/tree-sitter-powerbuilder.git
-cd tree-sitter-powerbuilder
+git clone https://github.com/pb-shrugged/tree-sitter-powerscript.git
+cd tree-sitter-powerscript
 npm install
 ```
 
@@ -134,14 +134,9 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guid
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
-
-- Tree-sitter for the parsing framework
-- PowerBuilder community for language insights
-
 ## Links
 
-- [NPM Package](https://www.npmjs.com/package/@pb-shrugged/tree-sitter-powerbuilder)
-- [GitHub Repository](https://github.com/pb-shrugged/tree-sitter-powerbuilder)
+- [NPM Package](https://www.npmjs.com/package/@pb-shrugged/tree-sitter-powerscript)
+- [GitHub Repository](https://github.com/pb-shrugged/tree-sitter-powerscript)
 - [Tree-sitter Documentation](https://tree-sitter.github.io/tree-sitter/)
 - [PowerBuilder Documentation](https://docs.appeon.com/#pb)

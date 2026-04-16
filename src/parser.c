@@ -102701,7 +102701,7 @@ extern "C" {
 #define TS_PUBLIC __attribute__((visibility("default")))
 #endif
 
-TS_PUBLIC const TSLanguage *tree_sitter_powerbuilder(void) {
+TS_PUBLIC const TSLanguage *tree_sitter_powerscript(void) {
   static const TSLanguage language = {
     .abi_version = LANGUAGE_VERSION,
     .symbol_count = SYMBOL_COUNT,
@@ -102731,12 +102731,12 @@ TS_PUBLIC const TSLanguage *tree_sitter_powerbuilder(void) {
     .keyword_lex_fn = ts_lex_keywords,
     .keyword_capture_token = sym_identifier,
     .primary_state_ids = ts_primary_state_ids,
-    .name = "powerbuilder",
+    .name = "powerscript",
     .max_reserved_word_set_size = 0,
     .metadata = {
-      .major_version = 2,
+      .major_version = 0,
       .minor_version = 0,
-      .patch_version = 6,
+      .patch_version = 1,
     },
   };
   return &language;

@@ -19,10 +19,10 @@ If you know which rule is involved, please reference it:
 // Current grammar rule from grammar.js
 ```
 
-## PowerBuilder Code Sample
+## powerscript Code Sample
 
-```powerbuilder
-// PowerBuilder code that demonstrates the issue
+```powerscript
+// Powerscript code that demonstrates the issue
 ```
 
 ## Suggested Improvement
