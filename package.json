@@ -2,7 +2,10 @@
   "name": "@pb-shrugged/tree-sitter-powerscript",
   "version": "0.0.1",
   "description": "Powerscript grammar for tree-sitter",
-  "repository": "https://github.com/pb-shrugged/tree-sitter-powerscript",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pb-shrugged/tree-sitter-powerscript.git"
+  },
   "license": "MIT",
   "author": {
     "name": "Jose Cagnini"
