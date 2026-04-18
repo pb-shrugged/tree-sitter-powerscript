@@ -38,7 +38,7 @@ declare const binding: {
    *
    * @deprecated
    */
-  name?: string;
+  name: string;
 
   /**
    * The inner language object.

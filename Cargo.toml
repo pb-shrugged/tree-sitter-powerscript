@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-powerscript"
 description = "Powerscript grammar for tree-sitter"
-version = "0.0.3"
+version = "0.0.4"
 authors = ["Jose Cagnini"]
 license = "MIT"
 readme = "README.md"
