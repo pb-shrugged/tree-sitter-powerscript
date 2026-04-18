@@ -1,6 +1,6 @@
 LANGUAGE_NAME := tree-sitter-powerscript
 HOMEPAGE_URL := https://github.com/pb-shrugged/tree-sitter-powerscript
-VERSION := 0.0.4
+VERSION := 0.0.5
 
 # repository
 SRC_DIR := src

@@ -44,7 +44,7 @@ declare const binding: {
    * The inner language object.
    * @private
    */
-  language: unknown;
+  language: typeof binding;
 
   /**
    * The content of the `node-types.json` file for this grammar.
