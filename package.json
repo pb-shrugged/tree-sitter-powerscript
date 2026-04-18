@@ -1,6 +1,6 @@
 {
   "name": "@pb-shrugged/tree-sitter-powerscript",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Powerscript grammar for tree-sitter",
   "type": "module",
   "repository": {
@@ -11,8 +11,8 @@
   "author": {
     "name": "Jose Cagnini"
   },
-  "main": "bindings/node",
-  "types": "bindings/node",
+  "main": "bindings/node/index.js",
+  "types": "bindings/node/index.d.ts",
   "keywords": [
     "incremental",
     "parsing",

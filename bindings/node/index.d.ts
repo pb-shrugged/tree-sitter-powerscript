@@ -11,12 +11,12 @@ type ChildNode = {
 
 type NodeInfo =
   | (BaseNode & {
-      subtypes: BaseNode[];
-    })
+    subtypes: BaseNode[];
+  })
   | (BaseNode & {
-      fields: { [name: string]: ChildNode };
-      children: ChildNode[];
-    });
+    fields: { [name: string]: ChildNode };
+    children: ChildNode[];
+  });
 
 /**
  * The tree-sitter language object for this grammar.
@@ -31,6 +31,15 @@ type NodeInfo =
  * parser.setLanguage(Powerscript);
  */
 declare const binding: {
+
+  /**
+   * (Added manually to index.d.ts)
+   * The name of the language
+   *
+   * @deprecated
+   */
+  name?: string;
+
   /**
    * The inner language object.
    * @private
