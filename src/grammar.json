@@ -1836,6 +1836,18 @@
           "name": "open_brackets"
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "integer_literal"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "SYMBOL",
           "name": "close_brackets"
         }
@@ -4929,6 +4941,15 @@
           },
           "named": false,
           "value": "longlong"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[lL][oO][nN][gG][pP][tT][rR]"
+          },
+          "named": false,
+          "value": "longptr"
         },
         {
           "type": "ALIAS",

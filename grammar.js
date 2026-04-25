@@ -421,7 +421,7 @@ export default grammar({
       $.close_brackets,
     ),
 
-    array_parameter_declaration_suffix: $ => seq($.open_brackets, $.close_brackets),
+    array_parameter_declaration_suffix: $ => seq($.open_brackets, optional($.integer_literal), $.close_brackets),
 
     access_modifier: $ => choice(
       $.public_keyword,
@@ -880,6 +880,7 @@ export default grammar({
       caseInsensitiveAlias('integer'),
       caseInsensitiveAlias('int'),
       caseInsensitiveAlias('longlong'),
+      caseInsensitiveAlias('longptr'),
       caseInsensitiveAlias('long'),
       caseInsensitiveAlias('real'),
       caseInsensitiveAlias('string'),

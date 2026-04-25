@@ -415,6 +415,10 @@
           "named": true
         },
         {
+          "type": "integer_literal",
+          "named": true
+        },
+        {
           "type": "open_brackets",
           "named": true
         }
@@ -6785,6 +6789,10 @@
   },
   {
     "type": "longlong",
+    "named": false
+  },
+  {
+    "type": "longptr",
     "named": false
   },
   {
