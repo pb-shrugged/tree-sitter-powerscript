@@ -1320,11 +1320,6 @@
     }
   },
   {
-    "type": "current_keyword",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "cursor_keyword",
     "named": true,
     "fields": {}
@@ -4125,6 +4120,11 @@
     }
   },
   {
+    "type": "method_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "method_object",
     "named": true,
     "fields": {},
@@ -6523,8 +6523,8 @@
     "named": false
   },
   {
-    "type": "current",
-    "named": false
+    "type": "current_keyword",
+    "named": true
   },
   {
     "type": "cursor",
@@ -6801,10 +6801,6 @@
   },
   {
     "type": "menu_file_extension",
-    "named": true
-  },
-  {
-    "type": "method_name",
     "named": true
   },
   {

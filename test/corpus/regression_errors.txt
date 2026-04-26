@@ -1,0 +1,130 @@
+==================
+Built-in function calls (string, integer, etc)
+==================
+global function integer test_fixes ();
+    string ls_error
+    ls_error = string(123, '')
+    ls_error = integer(ls_error)
+    return 1
+end function
+
+---
+
+(source_file
+  (class_file
+    (function_definition
+      (function_definition_statement
+        (global_keyword)
+        (function_keyword)
+        (return_type
+          (primitive_type))
+        (function_name)
+        (parameter_list
+          (open_parenthesis)
+          (close_parenthesis))
+        (statement_separation))
+      (function_definition_block
+        (statement
+          (local_variable_declaration_statement
+            (local_variable_declaration
+              (variable_type
+                (primitive_type))
+              (variable_declaration_list
+                (variable_declaration
+                  (variable_name))))))
+        (statement
+          (inline_statement
+            (assignment_statement
+              (l_value
+                (identifier_expression
+                  (identifier)))
+              (operator)
+              (r_value
+                (method_invocation
+                  (method_name)
+                  (argument_list
+                    (open_parenthesis)
+                    (r_value_expression
+                      (integer_literal))
+                    (r_value_expression
+                      (string_literal
+                        (single_quote)
+                        (single_quote)))
+                    (close_parenthesis)))))))
+        (statement
+          (inline_statement
+            (assignment_statement
+              (l_value
+                (identifier_expression
+                  (identifier)))
+              (operator)
+              (r_value
+                (method_invocation
+                  (method_name)
+                  (argument_list
+                    (open_parenthesis)
+                    (r_value_expression
+                      (l_value_expression
+                        (identifier_expression
+                          (identifier))))
+                    (close_parenthesis)))))))
+        (statement
+          (inline_statement
+            (return_statement
+              (return_keyword)
+              (return_value
+                (integer_literal))))))
+      (function_definition_statement_end
+        (end_keyword)
+        (function_keyword)))))
+
+==================
+Reserved words as custom types (function_object, structure)
+==================
+global function integer test_fixes ();
+    function_object ln_object
+    structure lst_struct
+    return 1
+end function
+
+---
+
+(source_file
+  (class_file
+    (function_definition
+      (function_definition_statement
+        (global_keyword)
+        (function_keyword)
+        (return_type
+          (primitive_type))
+        (function_name)
+        (parameter_list
+          (open_parenthesis)
+          (close_parenthesis))
+        (statement_separation))
+      (function_definition_block
+        (statement
+          (local_variable_declaration_statement
+            (local_variable_declaration
+              (variable_type
+                (custom_type))
+              (variable_declaration_list
+                (variable_declaration
+                  (variable_name))))))
+        (statement
+          (local_variable_declaration_statement
+            (local_variable_declaration
+              (variable_type
+                (custom_type))
+              (variable_declaration_list
+                (variable_declaration
+                  (variable_name))))))
+        (statement
+          (inline_statement
+            (return_statement
+              (return_keyword)
+              (return_value
+                (integer_literal))))))
+      (function_definition_statement_end
+        (end_keyword)
+        (function_keyword)))))

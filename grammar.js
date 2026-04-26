@@ -21,7 +21,7 @@ const PREC = {
   FIELD_ACCESS: 10,
   METHOD_INVOCATION: 11,
   IMMEDIATE_CASE: 12,
-  KEYWORD: 20,
+  KEYWORD: 0,
   IDENTIFIER_EXPRESSION: -1,
 };
 
@@ -738,7 +738,7 @@ export default grammar({
       optional(alias(choice($.function_keyword, $.event_keyword), $.method_type)),
       optional(alias(choice($.static_keyword, $.dynamic_keyword), $.call_type)),
       optional(alias(choice($.trigger_keyword, $.post_keyword), $.when_type)),
-      alias($.identifier, $.method_name),
+      alias(choice($.identifier, $.primitive_type), $.method_name),
       $.argument_list,
     )),
 
@@ -1155,8 +1155,9 @@ export default grammar({
         $.from_keyword,
         alias($.identifier, $.table_name),
         $.where_keyword,
-        $.where_criteria,
-        $.rest_of_sql,
+        alias(token(prec(1, caseInsensitiveRegExp('current'))), $.current_keyword),
+        $.of_keyword,
+        alias($.identifier, $.cursor_name),
         $.statement_separation,
       ),
       seq(
@@ -1164,9 +1165,8 @@ export default grammar({
         $.from_keyword,
         alias($.identifier, $.table_name),
         $.where_keyword,
-        $.current_keyword,
-        $.of_keyword,
-        alias($.identifier, $.cursor_name),
+        $.where_criteria,
+        $.rest_of_sql,
         $.statement_separation,
       ),
     ),
