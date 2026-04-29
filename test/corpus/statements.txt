@@ -1640,3 +1640,59 @@ end subroutine
       (subroutine_definition_statement_end
         (end_keyword)
         (subroutine_keyword)))))
+
+===
+Global scope operator
+===
+
+global subroutine test ();
+
+::gi_test = 0
+
+::MessageBox('', '')
+
+end subroutine
+
+---
+
+(source_file
+  (class_file
+    (function_definition
+      (subroutine_definition_statement
+        (global_keyword)
+        (subroutine_keyword)
+        (subroutine_name)
+        (parameter_list
+          (open_parenthesis)
+          (close_parenthesis))
+        (statement_separation))
+      (subroutine_definition_block
+        (statement
+          (inline_statement
+            (assignment_statement
+              (l_value
+                (identifier_expression
+                  (identifier)))
+              (operator)
+              (r_value
+                (integer_literal)))))
+        (statement
+          (inline_statement
+            (expression_statement
+              (method_invocation
+                (operator)
+                (method_name)
+                (argument_list
+                  (open_parenthesis)
+                  (r_value_expression
+                    (string_literal
+                      (single_quote)
+                      (single_quote)))
+                  (r_value_expression
+                    (string_literal
+                      (single_quote)
+                      (single_quote)))
+                  (close_parenthesis)))))))
+      (subroutine_definition_statement_end
+        (end_keyword)
+        (subroutine_keyword)))))

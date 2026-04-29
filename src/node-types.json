@@ -71,7 +71,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "array_literal",
@@ -123,10 +123,6 @@
         },
         {
           "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "super_keyword",
           "named": true
         },
         {
@@ -282,10 +278,6 @@
           "named": true
         },
         {
-          "type": "super_keyword",
-          "named": true
-        },
-        {
           "type": "this_keyword",
           "named": true
         },
@@ -381,10 +373,6 @@
         },
         {
           "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "super_keyword",
           "named": true
         },
         {
@@ -1116,10 +1104,6 @@
           "named": true
         },
         {
-          "type": "super_keyword",
-          "named": true
-        },
-        {
           "type": "this_keyword",
           "named": true
         },
@@ -1813,10 +1797,6 @@
         },
         {
           "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "super_keyword",
           "named": true
         },
         {
@@ -2651,10 +2631,6 @@
         },
         {
           "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "super_keyword",
           "named": true
         },
         {
@@ -3503,10 +3479,6 @@
           "named": true
         },
         {
-          "type": "super_keyword",
-          "named": true
-        },
-        {
           "type": "this_keyword",
           "named": true
         },
@@ -3579,10 +3551,6 @@
         },
         {
           "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "super_keyword",
           "named": true
         },
         {
@@ -3977,10 +3945,6 @@
           "named": true
         },
         {
-          "type": "super_keyword",
-          "named": true
-        },
-        {
           "type": "this_keyword",
           "named": true
         },
@@ -4113,6 +4077,10 @@
           "named": true
         },
         {
+          "type": "super_keyword",
+          "named": true
+        },
+        {
           "type": "when_type",
           "named": true
         }
@@ -4182,10 +4150,6 @@
         },
         {
           "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "super_keyword",
           "named": true
         },
         {
@@ -4281,10 +4245,6 @@
         },
         {
           "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "super_keyword",
           "named": true
         },
         {
@@ -4679,10 +4639,6 @@
           "named": true
         },
         {
-          "type": "super_keyword",
-          "named": true
-        },
-        {
           "type": "this_keyword",
           "named": true
         },
@@ -4755,10 +4711,6 @@
         },
         {
           "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "super_keyword",
           "named": true
         },
         {
@@ -4909,10 +4861,6 @@
           "named": true
         },
         {
-          "type": "super_keyword",
-          "named": true
-        },
-        {
           "type": "this_keyword",
           "named": true
         },
@@ -4985,10 +4933,6 @@
         },
         {
           "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "super_keyword",
           "named": true
         },
         {
@@ -5287,10 +5231,6 @@
         },
         {
           "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "super_keyword",
           "named": true
         },
         {
@@ -5728,10 +5668,6 @@
           "named": true
         },
         {
-          "type": "super_keyword",
-          "named": true
-        },
-        {
           "type": "this_keyword",
           "named": true
         },
@@ -5946,24 +5882,17 @@
   {
     "type": "unary_expression",
     "named": true,
-    "fields": {
-      "argument": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "r_value_expression",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "operator",
+          "named": true
+        },
+        {
+          "type": "r_value_expression",
           "named": true
         }
       ]
@@ -6154,10 +6083,6 @@
         },
         {
           "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "super_keyword",
           "named": true
         },
         {

@@ -675,7 +675,7 @@ export default grammar({
 
     call_statement: $ => seq(
       $.call_keyword,
-      alias($.r_value_expression, $.ancestor_name),
+      alias(choice($.super_keyword, $.r_value_expression), $.ancestor_name),
       optional(seq('`', alias($.identifier, $.control_name))),
       '::',
       alias($.identifier, $.event_name),
@@ -731,13 +731,23 @@ export default grammar({
     ),
 
     method_invocation: $ => prec(PREC.METHOD_INVOCATION, seq(
-      optional(seq(
-        alias(choice($.r_value_expression), $.method_object),
-        alias(choice('.', '::'), $.operator)),
+      optional(choice(
+        seq(
+          alias(choice($.r_value_expression), $.method_object),
+          alias('.', $.operator)
+        ),
+        seq(
+          optional($.super_keyword),
+          alias('::', $.operator),
+        )
+      )),
+      repeat(
+        choice(
+          alias(choice($.function_keyword, $.event_keyword), $.method_type),
+          alias(choice($.static_keyword, $.dynamic_keyword), $.call_type),
+          alias(choice($.trigger_keyword, $.post_keyword), $.when_type),
+        ),
       ),
-      optional(alias(choice($.function_keyword, $.event_keyword), $.method_type)),
-      optional(alias(choice($.static_keyword, $.dynamic_keyword), $.call_type)),
-      optional(alias(choice($.trigger_keyword, $.post_keyword), $.when_type)),
       alias(choice($.identifier, $.primitive_type), $.method_name),
       $.argument_list,
     )),
@@ -770,7 +780,6 @@ export default grammar({
       $.array_literal,
       $.this_keyword,
       $.parent_keyword,
-      $.super_keyword,
       $.enumetation_datatype,
       $.method_invocation,
       $.parenthesized_expression,
@@ -804,7 +813,7 @@ export default grammar({
 
     unary_expression: $ => prec.left(PREC.UNARY, seq(
       alias(choice($.not_keyword, '-', '+'), $.operator),
-      field('argument', $.r_value_expression),
+      $.r_value_expression,
     )),
 
     array_literal: $ => seq(
@@ -831,7 +840,7 @@ export default grammar({
 
     array_suffix_ref: _ => /\[[ \t]*\]/,
 
-    identifier_expression: $ => prec(PREC.IDENTIFIER_EXPRESSION, seq($.identifier, optional($.array_suffix_ref))),
+    identifier_expression: $ => prec(PREC.IDENTIFIER_EXPRESSION, seq(optional('::'), $.identifier, optional($.array_suffix_ref))),
 
     parenthesized_expression: $ => seq($.open_parenthesis, $.r_value_expression, $.close_parenthesis),
 

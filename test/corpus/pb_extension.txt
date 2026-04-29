@@ -142,8 +142,7 @@ end on
           (inline_statement
             (call_statement
               (call_keyword)
-              (ancestor_name
-                (super_keyword))
+              (ancestor_name)
               (event_name))))
         (statement
           (inline_statement
@@ -188,8 +187,7 @@ end on
           (inline_statement
             (call_statement
               (call_keyword)
-              (ancestor_name
-                (super_keyword))
+              (ancestor_name)
               (event_name)))))
       (on_event_definition_statement_end
         (end_keyword)
