@@ -79,7 +79,7 @@ export default grammar({
 
     forward_declaration_statement_body: $ => repeat1(choice(
       $.class_type_definition,
-      $.global_variable_declaration
+      $.global_variable_declaration,
     )),
 
     class_type_definition: $ => seq(
@@ -732,12 +732,12 @@ export default grammar({
       optional(choice(
         seq(
           alias(choice($.r_value_expression), $.method_object),
-          alias('.', $.operator)
+          alias('.', $.operator),
         ),
         seq(
           optional($.super_keyword),
           alias('::', $.operator),
-        )
+        ),
       )),
       repeat(
         choice(
@@ -827,7 +827,17 @@ export default grammar({
       $.close_brackets,
     ),
 
-    enumetation_datatype: $ => seq(alias(choice($.identifier, $.primitive_type), $.enum_name), '!'),
+    enumetation_datatype: $ => seq(
+      alias(
+        choice(
+          $.identifier,
+          $.primitive_type,
+          $.close_keyword,
+        ),
+        $.enum_name,
+      ),
+      '!',
+    ),
 
     field_access: $ => prec(PREC.FIELD_ACCESS, seq(
       alias(choice($.r_value_expression), $.object),

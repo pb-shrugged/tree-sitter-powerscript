@@ -4543,6 +4543,10 @@
               {
                 "type": "SYMBOL",
                 "name": "primitive_type"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "close_keyword"
               }
             ]
           },
