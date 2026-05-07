@@ -820,12 +820,19 @@ export default grammar({
       $.close_curly_brackets,
     ),
 
-    array_access: $ => seq(
-      alias($.r_value_expression, $.array_name),
-      $.open_brackets,
-      alias($.r_value_expression, $.array_index),
-      $.close_brackets,
-    ),
+    array_access: $ => prec(PREC.FIELD_ACCESS, seq(
+      alias(choice(
+        $.identifier_expression,
+        $.field_access,
+        $.method_invocation,
+        $.parenthesized_expression,
+      ), $.array_name),
+      repeat1(seq(
+        $.open_brackets,
+        alias($.r_value_expression, $.array_index),
+        $.close_brackets,
+      )),
+    )),
 
     enumetation_datatype: $ => seq(
       alias(

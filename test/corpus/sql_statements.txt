@@ -1146,13 +1146,11 @@ end subroutine
                 (l_value_expression
                   (array_access
                     (array_name
-                      (l_value_expression
-                        (field_access
-                          (object
-                            (l_value_expression
-                              (identifier_expression
-                                (identifier))))
-                          (field_name))))
+                      (object
+                        (l_value_expression
+                          (identifier_expression
+                            (identifier))))
+                      (field_name))
                     (open_brackets)
                     (array_index
                       (integer_literal))

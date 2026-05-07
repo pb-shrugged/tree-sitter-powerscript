@@ -406,6 +406,14 @@ event ue_event_id_activate;
 return 1
 end event
 
+event test();
+string ls_datetime[]
+
+Time(ls_datetime[2] + ' ' + ls_datetime[3])
+
+Time((ls_datetime[2]) + ' ' + (ls_datetime[3]))
+end event
+
 ---
 
 (source_file
@@ -462,6 +470,112 @@ end event
               (return_keyword)
               (return_value
                 (integer_literal))))))
+      (event_definition_statement_end
+        (end_keyword)
+        (event_keyword)))
+    (event_definition
+      (event_definition_statement
+        (event_declaration
+          (event_keyword)
+          (event_name)
+          (parameter_list
+            (open_parenthesis)
+            (close_parenthesis)))
+        (statement_separation))
+      (event_definition_block
+        (statement
+          (local_variable_declaration_statement
+            (local_variable_declaration
+              (variable_type
+                (primitive_type))
+              (variable_declaration_list
+                (variable_declaration
+                  (variable_name)
+                  (array_suffix
+                    (open_brackets)
+                    (close_brackets)))))))
+        (statement
+          (inline_statement
+            (expression_statement
+              (method_invocation
+                (method_name)
+                (argument_list
+                  (open_parenthesis)
+                  (r_value_expression
+                    (binary_expression
+                      (left_expression
+                        (binary_expression
+                          (left_expression
+                            (l_value_expression
+                              (array_access
+                                (array_name
+                                  (identifier))
+                                (open_brackets)
+                                (array_index
+                                  (integer_literal))
+                                (close_brackets))))
+                          (operator)
+                          (right_expression
+                            (string_literal
+                              (single_quote)
+                              (string_content)
+                              (single_quote)))))
+                      (operator)
+                      (right_expression
+                        (l_value_expression
+                          (array_access
+                            (array_name
+                              (identifier))
+                            (open_brackets)
+                            (array_index
+                              (integer_literal))
+                            (close_brackets))))))
+                  (close_parenthesis))))))
+        (statement
+          (inline_statement
+            (expression_statement
+              (method_invocation
+                (method_name)
+                (argument_list
+                  (open_parenthesis)
+                  (r_value_expression
+                    (binary_expression
+                      (left_expression
+                        (binary_expression
+                          (left_expression
+                            (parenthesized_expression
+                              (open_parenthesis)
+                              (r_value_expression
+                                (l_value_expression
+                                  (array_access
+                                    (array_name
+                                      (identifier))
+                                    (open_brackets)
+                                    (array_index
+                                      (integer_literal))
+                                    (close_brackets))))
+                              (close_parenthesis)))
+                          (operator)
+                          (right_expression
+                            (string_literal
+                              (single_quote)
+                              (string_content)
+                              (single_quote)))))
+                      (operator)
+                      (right_expression
+                        (parenthesized_expression
+                          (open_parenthesis)
+                          (r_value_expression
+                            (l_value_expression
+                              (array_access
+                                (array_name
+                                  (identifier))
+                                (open_brackets)
+                                (array_index
+                                  (integer_literal))
+                                (close_brackets))))
+                          (close_parenthesis)))))
+                  (close_parenthesis)))))))
       (event_definition_statement_end
         (end_keyword)
         (event_keyword)))))

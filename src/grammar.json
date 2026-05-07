@@ -4498,35 +4498,64 @@
       ]
     },
     "array_access": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "r_value_expression"
+      "type": "PREC",
+      "value": 10,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "ALIAS",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "identifier_expression"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "field_access"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "method_invocation"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "parenthesized_expression"
+                }
+              ]
+            },
+            "named": true,
+            "value": "array_name"
           },
-          "named": true,
-          "value": "array_name"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "open_brackets"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "r_value_expression"
-          },
-          "named": true,
-          "value": "array_index"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "close_brackets"
-        }
-      ]
+          {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "open_brackets"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "r_value_expression"
+                  },
+                  "named": true,
+                  "value": "array_index"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "close_brackets"
+                }
+              ]
+            }
+          }
+        ]
+      }
     },
     "enumetation_datatype": {
       "type": "SEQ",
