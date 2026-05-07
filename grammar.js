@@ -827,7 +827,7 @@ export default grammar({
       $.close_brackets,
     ),
 
-    enumetation_datatype: $ => seq(alias($.identifier, $.enum_name), '!'),
+    enumetation_datatype: $ => seq(alias(choice($.identifier, $.primitive_type), $.enum_name), '!'),
 
     field_access: $ => prec(PREC.FIELD_ACCESS, seq(
       alias(choice($.r_value_expression), $.object),

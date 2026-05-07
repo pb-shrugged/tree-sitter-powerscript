@@ -2018,6 +2018,11 @@
     }
   },
   {
+    "type": "enum_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "enumetation_datatype",
     "named": true,
     "fields": {},
@@ -6523,10 +6528,6 @@
   {
     "type": "end",
     "named": false
-  },
-  {
-    "type": "enum_name",
-    "named": true
   },
   {
     "type": "event",
