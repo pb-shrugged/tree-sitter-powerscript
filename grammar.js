@@ -39,7 +39,6 @@ export default grammar({
   ],
 
   conflicts: $ => [
-    [$.inline_if_statement, $.if_then_statement],
     [$.expression_statement, $.r_value_expression],
     [$.parenthesized_expression, $.destroy_statement],
     [$.halt_statement],
@@ -561,7 +560,7 @@ export default grammar({
       $.if_keyword,
       alias($.r_value_expression, $.condition),
       $.then_keyword,
-      optional($.statement_separation),
+      $._block_statement_separator,
     ),
 
     if_then_statement_end: $ => seq(
@@ -574,13 +573,13 @@ export default grammar({
       $.elseif_keyword,
       alias($.r_value_expression, $.condition),
       $.then_keyword,
-      optional($.statement_separation),
+      $._block_statement_separator,
       optional(alias($.scriptable_block, $.elseif_block)),
     ),
 
     else_clause: $ => seq(
       $.else_keyword,
-      optional($.statement_separation),
+      $._block_statement_separator,
       optional(alias($.scriptable_block, $.else_block)),
     ),
 
@@ -588,10 +587,15 @@ export default grammar({
       $.if_keyword,
       alias($.r_value_expression, $.condition),
       $.then_keyword,
+      $._inline_statement_separator,
       alias($.inline_statement, $.if_case_statement),
       optional(seq($.else_keyword, alias($.inline_statement, $.else_case_statement))),
       optional($.statement_separation),
     )),
+
+    _inline_statement_separator: _ => token.immediate(/[ \t]+/),
+
+    _block_statement_separator: _ => token.immediate(/[ \t]*\r?\n/),
 
     local_variable_declaration_statement: $ => seq(
       $.local_variable_declaration,

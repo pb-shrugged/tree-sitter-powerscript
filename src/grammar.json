@@ -2703,16 +2703,8 @@
           "name": "then_keyword"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "statement_separation"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_block_statement_separator"
         }
       ]
     },
@@ -2762,16 +2754,8 @@
           "name": "then_keyword"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "statement_separation"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_block_statement_separator"
         },
         {
           "type": "CHOICE",
@@ -2800,16 +2784,8 @@
           "name": "else_keyword"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "statement_separation"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_block_statement_separator"
         },
         {
           "type": "CHOICE",
@@ -2852,6 +2828,10 @@
           {
             "type": "SYMBOL",
             "name": "then_keyword"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_inline_statement_separator"
           },
           {
             "type": "ALIAS",
@@ -2901,6 +2881,20 @@
             ]
           }
         ]
+      }
+    },
+    "_inline_statement_separator": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[ \\t]+"
+      }
+    },
+    "_block_statement_separator": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[ \\t]*\\r?\\n"
       }
     },
     "local_variable_declaration_statement": {
@@ -8336,10 +8330,6 @@
     }
   ],
   "conflicts": [
-    [
-      "inline_if_statement",
-      "if_then_statement"
-    ],
     [
       "expression_statement",
       "r_value_expression"

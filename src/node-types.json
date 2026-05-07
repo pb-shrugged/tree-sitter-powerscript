@@ -1899,10 +1899,6 @@
         {
           "type": "else_keyword",
           "named": true
-        },
-        {
-          "type": "statement_separation",
-          "named": true
         }
       ]
     }
@@ -1945,10 +1941,6 @@
         },
         {
           "type": "elseif_keyword",
-          "named": true
-        },
-        {
-          "type": "statement_separation",
           "named": true
         },
         {
@@ -3354,10 +3346,6 @@
         },
         {
           "type": "if_keyword",
-          "named": true
-        },
-        {
-          "type": "statement_separation",
           "named": true
         },
         {
