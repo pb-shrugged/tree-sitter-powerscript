@@ -413,11 +413,11 @@ end on
       (end_type_declaration_statement
         (end_keyword)
         (type_keyword)))
-    (global_var_declaration
+    (global_variable_declaration
       (global_keyword)
       (type
         (custom_type))
-      (global_variable_name))
+      (variable_name))
     (external_function_prototypes
       (external_function_prototypes_statement
         (type_keyword)

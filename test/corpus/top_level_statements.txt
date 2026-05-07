@@ -287,11 +287,11 @@ global main_app main_app
 
 (source_file
   (class_file
-    (global_var_declaration
+    (global_variable_declaration
       (global_keyword)
       (type
         (custom_type))
-      (global_variable_name))))
+      (variable_name))))
 
 ===
 EXTERNAL FUNCTION declaration
