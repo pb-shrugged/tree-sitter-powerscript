@@ -63,7 +63,7 @@ export default grammar({
       $.shared_variables_section,
       $.instance_variables_section,
       $.class_type_definition,
-      $.global_var_declaration,
+      $.global_variable_declaration,
       $.external_function_prototypes,
       $.forward_function_prototypes,
       $.event_definition,
@@ -74,14 +74,14 @@ export default grammar({
 
     forward_declaration_section: $ => seq(
       alias($.forward_keyword, $.forward_declaration_statement),
-      $.forward_declaration_statement_body,
+      optional($.forward_declaration_statement_body),
       $.forward_declaration_statement_end,
     ),
 
-    forward_declaration_statement_body: $ => seq(
-      repeat1($.class_type_definition),
-      repeat($.global_variable_declaration),
-    ),
+    forward_declaration_statement_body: $ => repeat1(choice(
+      $.class_type_definition,
+      $.global_variable_declaration
+    )),
 
     class_type_definition: $ => seq(
       $.class_type_definition_statement,
@@ -156,12 +156,6 @@ export default grammar({
     ),
 
     global_variables_section_body: $ => repeat1($.local_variable_declaration),
-
-    global_var_declaration: $ => seq(
-      $.global_keyword,
-      $.type,
-      alias($.identifier, $.global_variable_name),
-    ),
 
     external_function_prototypes: $ => seq(
       $.external_function_prototypes_statement,
@@ -748,7 +742,7 @@ export default grammar({
           alias(choice($.trigger_keyword, $.post_keyword), $.when_type),
         ),
       ),
-      alias(choice($.identifier, $.primitive_type), $.method_name),
+      alias(choice($.identifier, $.primitive_type, $.close_keyword), $.method_name),
       $.argument_list,
     )),
 

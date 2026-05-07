@@ -55,7 +55,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "global_var_declaration"
+            "name": "global_variable_declaration"
           },
           {
             "type": "SYMBOL",
@@ -93,8 +93,16 @@
           "value": "forward_declaration_statement"
         },
         {
-          "type": "SYMBOL",
-          "name": "forward_declaration_statement_body"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "forward_declaration_statement_body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "SYMBOL",
@@ -103,23 +111,20 @@
       ]
     },
     "forward_declaration_statement_body": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "REPEAT1",
-          "content": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
             "type": "SYMBOL",
             "name": "class_type_definition"
-          }
-        },
-        {
-          "type": "REPEAT",
-          "content": {
+          },
+          {
             "type": "SYMBOL",
             "name": "global_variable_declaration"
           }
-        }
-      ]
+        ]
+      }
     },
     "class_type_definition": {
       "type": "SEQ",
@@ -454,28 +459,6 @@
         "type": "SYMBOL",
         "name": "local_variable_declaration"
       }
-    },
-    "global_var_declaration": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "global_keyword"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "type"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
-          },
-          "named": true,
-          "value": "global_variable_name"
-        }
-      ]
     },
     "external_function_prototypes": {
       "type": "SEQ",
@@ -3779,6 +3762,10 @@
                 {
                   "type": "SYMBOL",
                   "name": "primitive_type"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "close_keyword"
                 }
               ]
             },

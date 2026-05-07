@@ -852,7 +852,7 @@
           "named": true
         },
         {
-          "type": "global_var_declaration",
+          "type": "global_variable_declaration",
           "named": true
         },
         {
@@ -3067,29 +3067,6 @@
     "type": "global_keyword",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "global_var_declaration",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "global_keyword",
-          "named": true
-        },
-        {
-          "type": "global_variable_name",
-          "named": true
-        },
-        {
-          "type": "type",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "global_variable_declaration",
@@ -6642,10 +6619,6 @@
   {
     "type": "global",
     "named": false
-  },
-  {
-    "type": "global_variable_name",
-    "named": true
   },
   {
     "type": "goto",
