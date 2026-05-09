@@ -74,8 +74,10 @@ export default grammar({
 
     forward_declaration_section: $ => seq(
       alias($.forward_keyword, $.forward_declaration_statement),
+      optional($.statement_separation),
       optional($.forward_declaration_statement_body),
       $.forward_declaration_statement_end,
+      optional($.statement_separation),
     ),
 
     forward_declaration_statement_body: $ => repeat1(choice(
@@ -85,8 +87,10 @@ export default grammar({
 
     class_type_definition: $ => seq(
       $.class_type_definition_statement,
+      optional($.statement_separation),
       optional($.class_type_definition_statement_body),
       $.end_type_declaration_statement,
+      optional($.statement_separation),
     ),
 
     class_type_definition_statement: $ => seq(
@@ -110,15 +114,16 @@ export default grammar({
     ),
 
     class_type_definition_statement_body: $ => repeat1(choice(
-      $.event_declaration,
-      $.function_prototype,
-      alias($.local_variable_declaration, $.inner_class_variable_declaration),
+      seq($.event_declaration, optional($.statement_separation)),
+      seq($.function_prototype, optional($.statement_separation)),
+      alias($.local_variable_declaration_statement, $.inner_class_variable_declaration),
     )),
 
     global_variable_declaration: $ => seq(
       $.global_keyword,
       $.type,
       alias($.identifier, $.variable_name),
+      optional($.statement_separation),
     ),
 
     forward_declaration_statement_end: $ => seq(
@@ -128,8 +133,10 @@ export default grammar({
 
     shared_variables_section: $ => seq(
       $.shared_variables_section_statement,
+      optional($.statement_separation),
       optional($.shared_variables_section_body),
       $.end_variables_section,
+      optional($.statement_separation),
     ),
 
     shared_variables_section_statement: $ => seq(
@@ -137,7 +144,7 @@ export default grammar({
       $.variables_keyword,
     ),
 
-    shared_variables_section_body: $ => repeat1($.local_variable_declaration),
+    shared_variables_section_body: $ => repeat1($.local_variable_declaration_statement),
 
     end_variables_section: $ => seq(
       $.end_keyword,
@@ -146,8 +153,10 @@ export default grammar({
 
     global_variables_section: $ => seq(
       $.global_variables_section_statement,
+      optional($.statement_separation),
       optional($.global_variables_section_body),
       $.end_variables_section,
+      optional($.statement_separation),
     ),
 
     global_variables_section_statement: $ => seq(
@@ -155,12 +164,14 @@ export default grammar({
       $.variables_keyword,
     ),
 
-    global_variables_section_body: $ => repeat1($.local_variable_declaration),
+    global_variables_section_body: $ => repeat1($.local_variable_declaration_statement),
 
     external_function_prototypes: $ => seq(
       $.external_function_prototypes_statement,
+      optional($.statement_separation),
       repeat($.external_function_prototype),
       $.end_function_prototypes_statement,
+      optional($.statement_separation),
     ),
 
     external_function_prototypes_statement: $ => seq(
@@ -181,8 +192,10 @@ export default grammar({
 
     instance_variables_section: $ => seq(
       $.instance_variables_section_statement,
+      optional($.statement_separation),
       optional($.instance_variables_section_statement_body),
       $.end_variables_section,
+      optional($.statement_separation),
     ),
 
     instance_variables_section_statement: $ => seq(
@@ -205,7 +218,7 @@ export default grammar({
       optional($.access_modifier),
       optional($.readacess_modifier),
       optional($.writeaccess_modifier),
-      $.local_variable_declaration,
+      $.local_variable_declaration_statement,
     ),
 
     readacess_modifier: $ => choice(
@@ -222,6 +235,7 @@ export default grammar({
       $.event_definition_statement,
       optional(alias($.scriptable_block, $.event_definition_block)),
       $.event_definition_statement_end,
+      optional($.statement_separation),
     ),
 
     event_definition_statement: $ => seq(
@@ -236,8 +250,10 @@ export default grammar({
 
     on_event_definition: $ => seq(
       $.on_event_definition_statement,
+      optional($.statement_separation),
       optional(alias($.scriptable_block, $.on_event_definition_block)),
       $.on_event_definition_statement_end,
+      optional($.statement_separation),
     ),
 
     on_event_definition_statement: $ => seq(
@@ -259,8 +275,10 @@ export default grammar({
 
     structure_definition: $ => seq(
       $.structure_definition_statement,
+      optional($.statement_separation),
       optional($.structure_definition_body),
       $.end_type_declaration_statement,
+      optional($.statement_separation),
     ),
 
     structure_definition_statement: $ => seq(
@@ -278,6 +296,7 @@ export default grammar({
       alias($.identifier, $.field_name),
       optional($.array_suffix),
       optional($.structure_field_comment),
+      optional($.statement_separation),
     ),
 
     structure_field_comment: $ => seq(
@@ -289,7 +308,9 @@ export default grammar({
 
     function_type_declaration: $ => seq(
       $.function_type_declaration_statement,
+      optional($.statement_separation),
       $.end_type_declaration_statement,
+      optional($.statement_separation),
     ),
 
     function_type_declaration_statement: $ => seq(
@@ -304,8 +325,10 @@ export default grammar({
 
     forward_function_prototypes: $ => seq(
       $.forward_function_prototypes_statement,
+      optional($.statement_separation),
       repeat($.function_prototype),
       $.end_function_prototypes_statement,
+      optional($.statement_separation),
     ),
 
     forward_function_prototypes_statement: $ => seq($.forward_keyword, $.prototypes_keyword),
@@ -361,6 +384,7 @@ export default grammar({
       $.function_definition_statement,
       optional(alias($.scriptable_block, $.function_definition_block)),
       $.function_definition_statement_end,
+      optional($.statement_separation),
     ),
 
     function_definition_statement: $ => seq($._function_prototype, $.statement_separation),
@@ -371,6 +395,7 @@ export default grammar({
       $.subroutine_definition_statement,
       optional(alias($.scriptable_block, $.subroutine_definition_block)),
       $.subroutine_definition_statement_end,
+      optional($.statement_separation),
     ),
 
     subroutine_definition_statement: $ => seq($._subroutine_prototype, $.statement_separation),

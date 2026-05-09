@@ -893,6 +893,10 @@
         {
           "type": "end_type_declaration_statement",
           "named": true
+        },
+        {
+          "type": "statement_separation",
+          "named": true
         }
       ]
     }
@@ -978,6 +982,10 @@
         },
         {
           "type": "inner_class_variable_declaration",
+          "named": true
+        },
+        {
+          "type": "statement_separation",
           "named": true
         }
       ]
@@ -2099,6 +2107,10 @@
         {
           "type": "event_definition_statement_end",
           "named": true
+        },
+        {
+          "type": "statement_separation",
+          "named": true
         }
       ]
     }
@@ -2420,6 +2432,10 @@
         },
         {
           "type": "external_function_prototypes_statement",
+          "named": true
+        },
+        {
+          "type": "statement_separation",
           "named": true
         }
       ]
@@ -2801,6 +2817,10 @@
         {
           "type": "forward_declaration_statement_end",
           "named": true
+        },
+        {
+          "type": "statement_separation",
+          "named": true
         }
       ]
     }
@@ -2867,6 +2887,10 @@
         {
           "type": "function_prototype",
           "named": true
+        },
+        {
+          "type": "statement_separation",
+          "named": true
         }
       ]
     }
@@ -2918,6 +2942,10 @@
         },
         {
           "type": "function_definition_statement_end",
+          "named": true
+        },
+        {
+          "type": "statement_separation",
           "named": true
         },
         {
@@ -3082,6 +3110,10 @@
           "named": true
         },
         {
+          "type": "statement_separation",
+          "named": true
+        },
+        {
           "type": "type",
           "named": true
         },
@@ -3111,6 +3143,10 @@
         {
           "type": "global_variables_section_statement",
           "named": true
+        },
+        {
+          "type": "statement_separation",
+          "named": true
         }
       ]
     }
@@ -3124,7 +3160,7 @@
       "required": true,
       "types": [
         {
-          "type": "local_variable_declaration",
+          "type": "local_variable_declaration_statement",
           "named": true
         }
       ]
@@ -3649,19 +3685,11 @@
       "required": true,
       "types": [
         {
-          "type": "constant_keyword",
+          "type": "local_variable_declaration",
           "named": true
         },
         {
-          "type": "variable_declaration_list",
-          "named": true
-        },
-        {
-          "type": "variable_precision",
-          "named": true
-        },
-        {
-          "type": "variable_type",
+          "type": "statement_separation",
           "named": true
         }
       ]
@@ -3708,7 +3736,7 @@
           "named": true
         },
         {
-          "type": "local_variable_declaration",
+          "type": "local_variable_declaration_statement",
           "named": true
         },
         {
@@ -3740,6 +3768,10 @@
         },
         {
           "type": "instance_variables_section_statement_body",
+          "named": true
+        },
+        {
+          "type": "statement_separation",
           "named": true
         }
       ]
@@ -4263,6 +4295,10 @@
         },
         {
           "type": "on_event_definition_statement_end",
+          "named": true
+        },
+        {
+          "type": "statement_separation",
           "named": true
         }
       ]
@@ -5017,6 +5053,10 @@
         {
           "type": "shared_variables_section_statement",
           "named": true
+        },
+        {
+          "type": "statement_separation",
+          "named": true
         }
       ]
     }
@@ -5030,7 +5070,7 @@
       "required": true,
       "types": [
         {
-          "type": "local_variable_declaration",
+          "type": "local_variable_declaration_statement",
           "named": true
         }
       ]
@@ -5400,6 +5440,10 @@
           "named": true
         },
         {
+          "type": "statement_separation",
+          "named": true
+        },
+        {
           "type": "structure_definition_body",
           "named": true
         },
@@ -5466,6 +5510,10 @@
         },
         {
           "type": "field_name",
+          "named": true
+        },
+        {
+          "type": "statement_separation",
           "named": true
         },
         {

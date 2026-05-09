@@ -847,3 +847,294 @@ end on
       (on_event_definition_statement_end
         (end_keyword)
         (on_keyword)))))
+
+===
+TOP LEVEL statement separation optional boundaries
+===
+
+forward;
+global type wf_test from window;
+end type;
+end forward;
+
+type local_st_test from structure;
+	string test
+end type;
+
+global variables;
+integer gi_test
+end variables;
+
+shared variables;
+integer si_test
+end variables;
+
+type variables;
+private:
+integer ii_test
+end variables;
+
+type prototypes;
+function int GetSystemMetrics (int index) library "USER32.DLL"
+end prototypes;
+
+forward prototypes;
+public function boolean postevent (string e)
+end prototypes;
+
+global type main_app from application;
+integer ii_value
+end type;
+
+event ue_custom_event_no_return_no_parm();
+return
+end event;
+
+public function boolean of_test ();
+return true
+end function;
+
+public subroutine of_test_sub ();
+return
+end subroutine;
+
+on main_app.create;
+return
+end on;
+
+---
+
+(source_file
+  (class_file
+    (forward_declaration_section
+      (forward_declaration_statement)
+      (statement_separation)
+      (forward_declaration_statement_body
+        (class_type_definition
+          (class_type_definition_statement
+            (global_keyword)
+            (type_keyword)
+            (class_type_name)
+            (from_keyword)
+            (ancenstor_type_name))
+          (statement_separation)
+          (end_type_declaration_statement
+            (end_keyword)
+            (type_keyword))
+          (statement_separation)))
+      (forward_declaration_statement_end
+        (end_keyword)
+        (forward_keyword))
+      (statement_separation))
+    (structure_definition
+      (structure_definition_statement
+        (type_keyword)
+        (structure_name)
+        (from_keyword))
+      (statement_separation)
+      (structure_definition_body
+        (structure_field
+          (type
+            (primitive_type))
+          (field_name)))
+      (end_type_declaration_statement
+        (end_keyword)
+        (type_keyword))
+      (statement_separation))
+    (global_variables_section
+      (global_variables_section_statement
+        (global_keyword)
+        (variables_keyword))
+      (statement_separation)
+      (global_variables_section_body
+        (local_variable_declaration
+          (variable_type
+            (primitive_type))
+          (variable_declaration_list
+            (variable_declaration
+              (variable_name)))))
+      (end_variables_section
+        (end_keyword)
+        (variables_keyword))
+      (statement_separation))
+    (shared_variables_section
+      (shared_variables_section_statement
+        (shared_keyword)
+        (variables_keyword))
+      (statement_separation)
+      (shared_variables_section_body
+        (local_variable_declaration
+          (variable_type
+            (primitive_type))
+          (variable_declaration_list
+            (variable_declaration
+              (variable_name)))))
+      (end_variables_section
+        (end_keyword)
+        (variables_keyword))
+      (statement_separation))
+    (instance_variables_section
+      (instance_variables_section_statement
+        (type_keyword)
+        (variables_keyword))
+      (statement_separation)
+      (instance_variables_section_statement_body
+        (access_section
+          (access_modifier
+            (private_keyword)))
+        (instance_variable_declaration
+          (local_variable_declaration
+            (variable_type
+              (primitive_type))
+            (variable_declaration_list
+              (variable_declaration
+                (variable_name))))))
+      (end_variables_section
+        (end_keyword)
+        (variables_keyword))
+      (statement_separation))
+    (external_function_prototypes
+      (external_function_prototypes_statement
+        (type_keyword)
+        (prototypes_keyword))
+      (statement_separation)
+      (external_function_prototype
+        (function_prototype
+          (function_keyword)
+          (return_type
+            (primitive_type))
+          (function_name)
+          (parameter_list
+            (open_parenthesis)
+            (parameter
+              (type
+                (primitive_type))
+              (parameter_name))
+            (close_parenthesis)))
+        (library_keyword)
+        (library_name
+          (double_quote)
+          (string_content)
+          (double_quote)))
+      (end_function_prototypes_statement
+        (end_keyword)
+        (prototypes_keyword))
+      (statement_separation))
+    (forward_function_prototypes
+      (forward_function_prototypes_statement
+        (forward_keyword)
+        (prototypes_keyword))
+      (statement_separation)
+      (function_prototype
+        (access_modifier
+          (public_keyword))
+        (function_keyword)
+        (return_type
+          (primitive_type))
+        (function_name)
+        (parameter_list
+          (open_parenthesis)
+          (parameter
+            (type
+              (primitive_type))
+            (parameter_name))
+          (close_parenthesis)))
+      (end_function_prototypes_statement
+        (end_keyword)
+        (prototypes_keyword))
+      (statement_separation))
+    (class_type_definition
+      (class_type_definition_statement
+        (global_keyword)
+        (type_keyword)
+        (class_type_name)
+        (from_keyword)
+        (ancenstor_type_name))
+      (statement_separation)
+      (class_type_definition_statement_body
+        (inner_class_variable_declaration
+          (variable_type
+            (primitive_type))
+          (variable_declaration_list
+            (variable_declaration
+              (variable_name)))))
+      (end_type_declaration_statement
+        (end_keyword)
+        (type_keyword))
+      (statement_separation))
+    (event_definition
+      (event_definition_statement
+        (event_declaration
+          (event_keyword)
+          (event_name)
+          (parameter_list
+            (open_parenthesis)
+            (close_parenthesis)))
+        (statement_separation))
+      (event_definition_block
+        (statement
+          (inline_statement
+            (return_statement
+              (return_keyword)))))
+      (event_definition_statement_end
+        (end_keyword)
+        (event_keyword))
+      (statement_separation))
+    (function_definition
+      (function_definition_statement
+        (access_modifier
+          (public_keyword))
+        (function_keyword)
+        (return_type
+          (primitive_type))
+        (function_name)
+        (parameter_list
+          (open_parenthesis)
+          (close_parenthesis))
+        (statement_separation))
+      (function_definition_block
+        (statement
+          (inline_statement
+            (return_statement
+              (return_keyword)
+              (return_value
+                (boolean_literal
+                  (true_keyword)))))))
+      (function_definition_statement_end
+        (end_keyword)
+        (function_keyword))
+      (statement_separation))
+    (function_definition
+      (subroutine_definition_statement
+        (access_modifier
+          (public_keyword))
+        (subroutine_keyword)
+        (subroutine_name)
+        (parameter_list
+          (open_parenthesis)
+          (close_parenthesis))
+        (statement_separation))
+      (subroutine_definition_block
+        (statement
+          (inline_statement
+            (return_statement
+              (return_keyword)))))
+      (subroutine_definition_statement_end
+        (end_keyword)
+        (subroutine_keyword))
+      (statement_separation))
+    (on_event_definition
+      (on_event_definition_statement
+        (on_keyword)
+        (class_name)
+        (create_keyword))
+      (statement_separation)
+      (on_event_definition_block
+        (statement
+          (inline_statement
+            (return_statement
+              (return_keyword)))))
+      (on_event_definition_statement_end
+        (end_keyword)
+        (on_keyword))
+      (statement_separation))))
