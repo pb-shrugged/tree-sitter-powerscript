@@ -228,3 +228,79 @@ end subroutine
       (subroutine_definition_statement_end
         (end_keyword)
         (subroutine_keyword)))))
+
+==================
+Multiline string continuation
+==================
+public function integer of_wrong_string ();
+ls_wrong = "astetae e tea
+teste"
+end function
+
+public function integer of_correct_string ();
+ls_correct = "astetae e tea &
+teste"
+end function
+
+---
+
+(source_file
+  (class_file
+    (function_definition
+      (function_definition_statement
+        (access_modifier
+          (public_keyword))
+        (function_keyword)
+        (return_type
+          (primitive_type))
+        (function_name)
+        (parameter_list
+          (open_parenthesis)
+          (close_parenthesis))
+        (statement_separation))
+      (function_definition_block
+        (statement
+          (inline_statement
+            (assignment_statement
+              (l_value
+                (identifier_expression
+                  (identifier)))
+              (operator)
+              (r_value
+                (string_literal
+                  (double_quote)
+                  (string_content)
+                  (ERROR
+                    (identifier))
+                  (double_quote)))))))
+      (function_definition_statement_end
+        (end_keyword)
+        (function_keyword)))
+    (function_definition
+      (function_definition_statement
+        (access_modifier
+          (public_keyword))
+        (function_keyword)
+        (return_type
+          (primitive_type))
+        (function_name)
+        (parameter_list
+          (open_parenthesis)
+          (close_parenthesis))
+        (statement_separation))
+      (function_definition_block
+        (statement
+          (inline_statement
+            (assignment_statement
+              (l_value
+                (identifier_expression
+                  (identifier)))
+              (operator)
+              (r_value
+                (string_literal
+                  (double_quote)
+                  (string_content)
+                  (double_quote)))))))
+      (function_definition_statement_end
+        (end_keyword)
+        (function_keyword)))))

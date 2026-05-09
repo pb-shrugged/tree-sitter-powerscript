@@ -5116,44 +5116,69 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "double_quote"
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "\""
+              },
+              "named": true,
+              "value": "double_quote"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "REPEAT1",
+                    "content": {
+                      "type": "IMMEDIATE_TOKEN",
+                      "content": {
+                        "type": "PREC",
+                        "value": 1,
+                        "content": {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "PATTERN",
+                              "value": "[^\"&~\\r\\n]+"
+                            },
+                            {
+                              "type": "PATTERN",
+                              "value": "~."
+                            },
+                            {
+                              "type": "PATTERN",
+                              "value": "&\\r?\\n[ \\t\\v\\f]*"
+                            },
+                            {
+                              "type": "PATTERN",
+                              "value": "&"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "named": true,
+                  "value": "string_content"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             },
             {
               "type": "ALIAS",
               "content": {
-                "type": "REPEAT",
+                "type": "IMMEDIATE_TOKEN",
                 "content": {
-                  "type": "IMMEDIATE_TOKEN",
-                  "content": {
-                    "type": "PREC",
-                    "value": 1,
-                    "content": {
-                      "type": "CHOICE",
-                      "members": [
-                        {
-                          "type": "PATTERN",
-                          "value": "[^\"\\\\]"
-                        },
-                        {
-                          "type": "PATTERN",
-                          "value": "\\\\."
-                        },
-                        {
-                          "type": "PATTERN",
-                          "value": "~\""
-                        }
-                      ]
-                    }
-                  }
+                  "type": "STRING",
+                  "value": "\""
                 }
               },
               "named": true,
-              "value": "string_content"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "double_quote"
+              "value": "double_quote"
             }
           ]
         },
@@ -5161,44 +5186,69 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "single_quote"
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "'"
+              },
+              "named": true,
+              "value": "single_quote"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "REPEAT1",
+                    "content": {
+                      "type": "IMMEDIATE_TOKEN",
+                      "content": {
+                        "type": "PREC",
+                        "value": 1,
+                        "content": {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "PATTERN",
+                              "value": "[^'&~\\r\\n]+"
+                            },
+                            {
+                              "type": "PATTERN",
+                              "value": "~."
+                            },
+                            {
+                              "type": "PATTERN",
+                              "value": "&\\r?\\n[ \\t\\v\\f]*"
+                            },
+                            {
+                              "type": "PATTERN",
+                              "value": "&"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "named": true,
+                  "value": "string_content"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             },
             {
               "type": "ALIAS",
               "content": {
-                "type": "REPEAT",
+                "type": "IMMEDIATE_TOKEN",
                 "content": {
-                  "type": "IMMEDIATE_TOKEN",
-                  "content": {
-                    "type": "PREC",
-                    "value": 1,
-                    "content": {
-                      "type": "CHOICE",
-                      "members": [
-                        {
-                          "type": "PATTERN",
-                          "value": "[^'\\\\]"
-                        },
-                        {
-                          "type": "PATTERN",
-                          "value": "\\\\."
-                        },
-                        {
-                          "type": "PATTERN",
-                          "value": "~'"
-                        }
-                      ]
-                    }
-                  }
+                  "type": "STRING",
+                  "value": "'"
                 }
               },
               "named": true,
-              "value": "string_content"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "single_quote"
+              "value": "single_quote"
             }
           ]
         }

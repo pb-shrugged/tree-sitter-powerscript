@@ -906,8 +906,26 @@ export default grammar({
     time_literal: $ => /(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](?:\.[0-9]{1,6})?/,
 
     string_literal: $ => choice(
-      seq($.double_quote, alias(repeat(token.immediate(prec(1, choice(/[^"\\]/, /\\./, /~"/)))), $.string_content), $.double_quote),
-      seq($.single_quote, alias(repeat(token.immediate(prec(1, choice(/[^'\\]/, /\\./, /~'/)))), $.string_content), $.single_quote),
+      seq(
+        alias('"', $.double_quote),
+        optional(alias(repeat1(token.immediate(prec(1, choice(
+          /[^"&~\r\n]+/,
+          /~./,
+          /&\r?\n[ \t\v\f]*/,
+          /&/,
+        )))), $.string_content)),
+        alias(token.immediate('"'), $.double_quote),
+      ),
+      seq(
+        alias('\'', $.single_quote),
+        optional(alias(repeat1(token.immediate(prec(1, choice(
+          /[^'&~\r\n]+/,
+          /~./,
+          /&\r?\n[ \t\v\f]*/,
+          /&/,
+        )))), $.string_content)),
+        alias(token.immediate('\''), $.single_quote),
+      ),
     ),
 
     boolean_literal: $ => choice(

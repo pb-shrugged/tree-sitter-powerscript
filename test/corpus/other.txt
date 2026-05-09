@@ -10,6 +10,7 @@ test = 'string /* string */ string'
 test = "string ~" ' string"
 test = "string // string string"
 test = "string /* string */ string"
+test = "\"
 
 end subroutine
 
@@ -63,6 +64,18 @@ end subroutine
                   (single_quote)
                   (string_content)
                   (single_quote))))))
+        (statement
+          (inline_statement
+            (assignment_statement
+              (l_value
+                (identifier_expression
+                  (identifier)))
+              (operator)
+              (r_value
+                (string_literal
+                  (double_quote)
+                  (string_content)
+                  (double_quote))))))
         (statement
           (inline_statement
             (assignment_statement
