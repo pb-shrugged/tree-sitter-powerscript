@@ -560,7 +560,13 @@ export default grammar({
     for_loop: $ => seq(
       $.for_loop_statement,
       optional(alias($.scriptable_block, $.for_loop_block)),
+      choice(
       $.next_keyword,
+        seq(
+          $.end_keyword,
+          $.for_keyword,
+        )
+      ),
       optional($.statement_separation),
     ),
 
