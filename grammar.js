@@ -172,7 +172,10 @@ export default grammar({
     external_function_prototypes: $ => seq(
       $.external_function_prototypes_statement,
       optional($.statement_separation),
-      repeat($.external_function_prototype),
+      repeat(choice(
+        $.access_section,
+        $.external_function_prototype,
+      )),
       $.end_function_prototypes_statement,
       optional($.statement_separation),
     ),
@@ -561,7 +564,7 @@ export default grammar({
       $.for_loop_statement,
       optional(alias($.scriptable_block, $.for_loop_block)),
       choice(
-      $.next_keyword,
+        $.next_keyword,
         seq(
           $.end_keyword,
           $.for_keyword,

@@ -2423,6 +2423,10 @@
       "required": true,
       "types": [
         {
+          "type": "access_section",
+          "named": true
+        },
+        {
           "type": "end_function_prototypes_statement",
           "named": true
         },
@@ -2721,6 +2725,14 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "end_keyword",
+          "named": true
+        },
+        {
+          "type": "for_keyword",
+          "named": true
+        },
         {
           "type": "for_loop_block",
           "named": true

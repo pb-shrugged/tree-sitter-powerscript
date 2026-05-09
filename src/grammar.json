@@ -624,8 +624,17 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "external_function_prototype"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "access_section"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "external_function_prototype"
+              }
+            ]
           }
         },
         {
@@ -2838,8 +2847,26 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "next_keyword"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "next_keyword"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "end_keyword"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "for_keyword"
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "CHOICE",
