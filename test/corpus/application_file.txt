@@ -245,14 +245,15 @@ end on
         (shared_keyword)
         (variables_keyword))
       (shared_variables_section_body
-        (local_variable_declaration
-          (variable_type
-            (primitive_type))
-          (variable_declaration_list
-            (variable_declaration
-              (variable_name)
-              (initial_value
-                (integer_literal))))))
+        (local_variable_declaration_statement
+          (local_variable_declaration
+            (variable_type
+              (primitive_type))
+            (variable_declaration_list
+              (variable_declaration
+                (variable_name)
+                (initial_value
+                  (integer_literal)))))))
       (end_variables_section
         (end_keyword)
         (variables_keyword)))
@@ -261,20 +262,21 @@ end on
         (global_keyword)
         (variables_keyword))
       (global_variables_section_body
-        (local_variable_declaration
-          (variable_type
-            (primitive_type))
-          (variable_declaration_list
-            (variable_declaration
-              (variable_name)
-              (initial_value
-                (integer_literal)))
-            (variable_declaration
-              (variable_name)
-              (initial_value
-                (integer_literal)))
-            (variable_declaration
-              (variable_name)))))
+        (local_variable_declaration_statement
+          (local_variable_declaration
+            (variable_type
+              (primitive_type))
+            (variable_declaration_list
+              (variable_declaration
+                (variable_name)
+                (initial_value
+                  (integer_literal)))
+              (variable_declaration
+                (variable_name)
+                (initial_value
+                  (integer_literal)))
+              (variable_declaration
+                (variable_name))))))
       (end_variables_section
         (end_keyword)
         (variables_keyword)))
@@ -287,75 +289,82 @@ end on
         (ancenstor_type_name))
       (class_type_definition_statement_body
         (inner_class_variable_declaration
-          (variable_type
-            (primitive_type))
-          (variable_declaration_list
-            (variable_declaration
-              (variable_name)
-              (initial_value
-                (string_literal
-                  (double_quote)
-                  (string_content)
-                  (double_quote))))))
+          (local_variable_declaration
+            (variable_type
+              (primitive_type))
+            (variable_declaration_list
+              (variable_declaration
+                (variable_name)
+                (initial_value
+                  (string_literal
+                    (double_quote)
+                    (string_content)
+                    (double_quote)))))))
         (inner_class_variable_declaration
-          (variable_type
-            (primitive_type))
-          (variable_declaration_list
-            (variable_declaration
-              (variable_name)
-              (initial_value
-                (boolean_literal
-                  (true_keyword))))))
+          (local_variable_declaration
+            (variable_type
+              (primitive_type))
+            (variable_declaration_list
+              (variable_declaration
+                (variable_name)
+                (initial_value
+                  (boolean_literal
+                    (true_keyword)))))))
         (inner_class_variable_declaration
-          (variable_type
-            (primitive_type))
-          (variable_declaration_list
-            (variable_declaration
-              (variable_name)
-              (initial_value
-                (string_literal
-                  (double_quote)
-                  (string_content)
-                  (double_quote))))))
+          (local_variable_declaration
+            (variable_type
+              (primitive_type))
+            (variable_declaration_list
+              (variable_declaration
+                (variable_name)
+                (initial_value
+                  (string_literal
+                    (double_quote)
+                    (string_content)
+                    (double_quote)))))))
         (inner_class_variable_declaration
-          (variable_type
-            (primitive_type))
-          (variable_declaration_list
-            (variable_declaration
-              (variable_name)
-              (initial_value
-                (string_literal
-                  (double_quote)
-                  (string_content)
-                  (double_quote))))))
+          (local_variable_declaration
+            (variable_type
+              (primitive_type))
+            (variable_declaration_list
+              (variable_declaration
+                (variable_name)
+                (initial_value
+                  (string_literal
+                    (double_quote)
+                    (string_content)
+                    (double_quote)))))))
         (inner_class_variable_declaration
-          (variable_type
-            (primitive_type))
-          (variable_declaration_list
-            (variable_declaration
-              (variable_name)
-              (initial_value
-                (integer_literal)))))
+          (local_variable_declaration
+            (variable_type
+              (primitive_type))
+            (variable_declaration_list
+              (variable_declaration
+                (variable_name)
+                (initial_value
+                  (integer_literal))))))
         (inner_class_variable_declaration
-          (variable_type
-            (primitive_type))
-          (variable_declaration_list
-            (variable_declaration
-              (variable_name)
-              (initial_value
-                (string_literal
-                  (double_quote)
-                  (string_content)
-                  (double_quote))))))
+          (local_variable_declaration
+            (variable_type
+              (primitive_type))
+            (variable_declaration_list
+              (variable_declaration
+                (variable_name)
+                (initial_value
+                  (string_literal
+                    (double_quote)
+                    (string_content)
+                    (double_quote)))))))
         (inner_class_variable_declaration
-          (variable_type
-            (primitive_type))
-          (variable_declaration_list
-            (variable_declaration
-              (variable_name)
-              (initial_value
-                (boolean_literal
-                  (true_keyword))))))
+          (local_variable_declaration
+            (variable_type
+              (primitive_type))
+            (variable_declaration_list
+              (variable_declaration
+                (variable_name)
+                (initial_value
+                  (boolean_literal
+                    (true_keyword)))))))
         (event_declaration
           (event_keyword)
           (event_name)
@@ -405,11 +414,12 @@ end on
           (event_name)
           (event_id))
         (inner_class_variable_declaration
-          (variable_type
-            (custom_type))
-          (variable_declaration_list
-            (variable_declaration
-              (variable_name)))))
+          (local_variable_declaration
+            (variable_type
+              (custom_type))
+            (variable_declaration_list
+              (variable_declaration
+                (variable_name))))))
       (end_type_declaration_statement
         (end_keyword)
         (type_keyword)))
@@ -455,14 +465,15 @@ end on
         (instance_variable_declaration
           (access_modifier
             (private_keyword))
-          (local_variable_declaration
-            (variable_type
-              (primitive_type))
-            (variable_declaration_list
-              (variable_declaration
-                (variable_name)
-                (initial_value
-                  (integer_literal)))))))
+          (local_variable_declaration_statement
+            (local_variable_declaration
+              (variable_type
+                (primitive_type))
+              (variable_declaration_list
+                (variable_declaration
+                  (variable_name)
+                  (initial_value
+                    (integer_literal))))))))
       (end_variables_section
         (end_keyword)
         (variables_keyword)))
@@ -938,13 +949,14 @@ end on
             (throws_keyword)
             (throwable_name)))
         (inner_class_variable_declaration
-          (variable_type
-            (primitive_type))
-          (variable_declaration_list
-            (variable_declaration
-              (variable_name)
-              (initial_value
-                (integer_literal))))))
+          (local_variable_declaration
+            (variable_type
+              (primitive_type))
+            (variable_declaration_list
+              (variable_declaration
+                (variable_name)
+                (initial_value
+                  (integer_literal)))))))
       (end_type_declaration_statement
         (end_keyword)
         (type_keyword)))
