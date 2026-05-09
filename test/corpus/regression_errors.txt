@@ -128,3 +128,103 @@ end function
       (function_definition_statement_end
         (end_keyword)
         (function_keyword)))))
+
+===
+IF inline problem
+===
+
+global subroutine test ();
+
+if li_test < 0 then li_test = 0
+
+if li_test > 0 then
+  if li_test = 1 then
+    li_test = 0
+  end if
+end if
+
+end subroutine
+
+---
+
+(source_file
+  (class_file
+    (function_definition
+      (subroutine_definition_statement
+        (global_keyword)
+        (subroutine_keyword)
+        (subroutine_name)
+        (parameter_list
+          (open_parenthesis)
+          (close_parenthesis))
+        (statement_separation))
+      (subroutine_definition_block
+        (statement
+          (inline_if_statement
+            (if_keyword)
+            (condition
+              (binary_expression
+                (left_expression
+                  (l_value_expression
+                    (identifier_expression
+                      (identifier))))
+                (operator)
+                (right_expression
+                  (integer_literal))))
+            (then_keyword)
+            (if_case_statement
+              (assignment_statement
+                (l_value
+                  (identifier_expression
+                    (identifier)))
+                (operator)
+                (r_value
+                  (integer_literal))))))
+        (statement
+          (if_statement
+            (if_then_statement
+              (if_keyword)
+              (condition
+                (binary_expression
+                  (left_expression
+                    (l_value_expression
+                      (identifier_expression
+                        (identifier))))
+                  (operator)
+                  (right_expression
+                    (integer_literal))))
+              (then_keyword))
+            (if_block
+              (statement
+                (if_statement
+                  (if_then_statement
+                    (if_keyword)
+                    (condition
+                      (binary_expression
+                        (left_expression
+                          (l_value_expression
+                            (identifier_expression
+                              (identifier))))
+                        (operator)
+                        (right_expression
+                          (integer_literal))))
+                    (then_keyword))
+                  (if_block
+                    (statement
+                      (inline_statement
+                        (assignment_statement
+                          (l_value
+                            (identifier_expression
+                              (identifier)))
+                          (operator)
+                          (r_value
+                            (integer_literal))))))
+                  (if_then_statement_end
+                    (end_keyword)
+                    (if_keyword)))))
+            (if_then_statement_end
+              (end_keyword)
+              (if_keyword)))))
+      (subroutine_definition_statement_end
+        (end_keyword)
+        (subroutine_keyword)))))

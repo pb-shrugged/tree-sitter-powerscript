@@ -3188,6 +3188,10 @@
             "name": "then_keyword"
           },
           {
+            "type": "SYMBOL",
+            "name": "_inline_then_marker"
+          },
+          {
             "type": "ALIAS",
             "content": {
               "type": "SYMBOL",
@@ -8713,10 +8717,6 @@
   ],
   "conflicts": [
     [
-      "inline_if_statement",
-      "if_then_statement"
-    ],
-    [
       "expression_statement",
       "r_value_expression"
     ],
@@ -8744,7 +8744,12 @@
     ]
   ],
   "precedences": [],
-  "externals": [],
+  "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "_inline_then_marker"
+    }
+  ],
   "inline": [],
   "supertypes": [],
   "reserved": {}

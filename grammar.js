@@ -38,8 +38,11 @@ export default grammar({
     $.line_continuation,
   ],
 
+  externals: $ => [
+    $._inline_then_marker,
+  ],
+
   conflicts: $ => [
-    [$.inline_if_statement, $.if_then_statement],
     [$.expression_statement, $.r_value_expression],
     [$.parenthesized_expression, $.destroy_statement],
     [$.halt_statement],
@@ -613,6 +616,7 @@ export default grammar({
       $.if_keyword,
       alias($.r_value_expression, $.condition),
       $.then_keyword,
+      $._inline_then_marker,
       alias($.inline_statement, $.if_case_statement),
       optional(seq($.else_keyword, alias($.inline_statement, $.else_case_statement))),
       optional($.statement_separation),
