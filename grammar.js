@@ -861,11 +861,11 @@ export default grammar({
         $.method_invocation,
         $.parenthesized_expression,
       ), $.array_name),
-      repeat1(seq(
+      seq(
         $.open_brackets,
-        alias($.r_value_expression, $.array_index),
+        commaSep1(alias($.r_value_expression, $.array_index)),
         $.close_brackets,
-      )),
+      ),
     )),
 
     enumetation_datatype: $ => seq(

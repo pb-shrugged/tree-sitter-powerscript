@@ -106,6 +106,7 @@ global subroutine test ();
 li_test = 0
 li_test = ''
 li_test = test()
+ads_obj.Object.Data[al_row, li_cnt] = aa_columnvalues
 
 end subroutine
 
@@ -155,7 +156,37 @@ end subroutine
                   (method_name)
                   (argument_list
                     (open_parenthesis)
-                    (close_parenthesis))))))))
+                    (close_parenthesis)))))))
+        (statement
+          (inline_statement
+            (assignment_statement
+              (l_value
+                (array_access
+                  (array_name
+                    (object
+                      (l_value_expression
+                        (field_access
+                          (object
+                            (l_value_expression
+                              (identifier_expression
+                                (identifier))))
+                          (field_name))))
+                    (field_name))
+                  (open_brackets)
+                  (array_index
+                    (l_value_expression
+                      (identifier_expression
+                        (identifier))))
+                  (array_index
+                    (l_value_expression
+                      (identifier_expression
+                        (identifier))))
+                  (close_brackets)))
+              (operator)
+              (r_value
+                (l_value_expression
+                  (identifier_expression
+                    (identifier))))))))
       (subroutine_definition_statement_end
         (end_keyword)
         (subroutine_keyword)))))
