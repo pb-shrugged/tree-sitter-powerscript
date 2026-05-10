@@ -710,7 +710,7 @@ export default grammar({
       alias(choice($.super_keyword, $.r_value_expression), $.ancestor_name),
       optional(seq('`', alias($.identifier, $.control_name))),
       '::',
-      alias($.identifier, $.event_name),
+      alias($.valid_method_name, $.event_name),
     ),
 
     continue_statement: $ => $.continue_keyword,
@@ -780,9 +780,11 @@ export default grammar({
           alias(choice($.trigger_keyword, $.post_keyword), $.when_type),
         ),
       ),
-      alias(choice($.identifier, $.primitive_type, $.close_keyword), $.method_name),
+      alias($.valid_method_name, $.method_name),
       $.argument_list,
     )),
+
+    valid_method_name: $ => choice($.identifier, $.primitive_type, $.close_keyword, $.open_keyword),
 
     argument_list: $ => seq(
       $.open_parenthesis,

@@ -3736,7 +3736,7 @@
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "identifier"
+            "name": "valid_method_name"
           },
           "named": true,
           "value": "event_name"
@@ -4118,21 +4118,8 @@
           {
             "type": "ALIAS",
             "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "primitive_type"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "close_keyword"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "valid_method_name"
             },
             "named": true,
             "value": "method_name"
@@ -4143,6 +4130,23 @@
           }
         ]
       }
+    },
+    "valid_method_name": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "primitive_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "close_keyword"
+        }
+      ]
     },
     "argument_list": {
       "type": "SEQ",
