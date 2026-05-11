@@ -4034,28 +4034,33 @@
       ]
     },
     "return_statement": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
+        {
+          "type": "PREC_DYNAMIC",
+          "value": 1,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "return_keyword"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "r_value_expression"
+                },
+                "named": true,
+                "value": "return_value"
+              }
+            ]
+          }
+        },
         {
           "type": "SYMBOL",
           "name": "return_keyword"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "r_value_expression"
-              },
-              "named": true,
-              "value": "return_value"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
         }
       ]
     },

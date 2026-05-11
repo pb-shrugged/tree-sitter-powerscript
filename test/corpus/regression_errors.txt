@@ -119,6 +119,90 @@ end function
         (end_keyword)
         (function_keyword)))))
 
+=========================
+Inline if return value
+=========================
+public function integer of_rgb2xyz (s_rgb_colorattrib astr_from, ref s_xyz_colorattrib astr_to);
+
+if isnull( astr_from ) then return ERR_MISSING_PARM
+if isnull( astr_to ) then return ERR_MISSING_PARM
+
+end function
+
+---
+
+(source_file
+  (class_file
+    (function_definition
+      (function_definition_statement
+        (access_modifier
+          (public_keyword))
+        (function_keyword)
+        (return_type
+          (primitive_type))
+        (function_name)
+        (parameter_list
+          (open_parenthesis)
+          (parameter
+            (type
+              (custom_type))
+            (parameter_name))
+          (parameter
+            (parameter_pass_by_type)
+            (type
+              (custom_type))
+            (parameter_name))
+          (close_parenthesis))
+        (statement_separation))
+      (function_definition_block
+        (statement
+          (inline_if_statement
+            (if_keyword)
+            (condition
+              (method_invocation
+                (method_name
+                  (identifier))
+                (argument_list
+                  (open_parenthesis)
+                  (r_value_expression
+                    (l_value_expression
+                      (identifier_expression
+                        (identifier))))
+                  (close_parenthesis))))
+            (then_keyword)
+            (if_case_statement
+              (return_statement
+                (return_keyword)
+                (return_value
+                  (l_value_expression
+                    (identifier_expression
+                      (identifier))))))))
+        (statement
+          (inline_if_statement
+            (if_keyword)
+            (condition
+              (method_invocation
+                (method_name
+                  (identifier))
+                (argument_list
+                  (open_parenthesis)
+                  (r_value_expression
+                    (l_value_expression
+                      (identifier_expression
+                        (identifier))))
+                  (close_parenthesis))))
+            (then_keyword)
+            (if_case_statement
+              (return_statement
+                (return_keyword)
+                (return_value
+                  (l_value_expression
+                    (identifier_expression
+                      (identifier)))))))))
+      (function_definition_statement_end
+        (end_keyword)
+        (function_keyword)))))
+
 ==================
 Reserved words as custom types (function_object, structure)
 ==================

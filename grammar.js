@@ -746,9 +746,12 @@ export default grammar({
 
     halt_statement: $ => seq($.halt_keyword, optional($.close_keyword)),
 
-    return_statement: $ => seq(
+    return_statement: $ => choice(
+      prec.dynamic(1, seq(
+        $.return_keyword,
+        alias($.r_value_expression, $.return_value),
+      )),
       $.return_keyword,
-      optional(alias($.r_value_expression, $.return_value)),
     ),
 
     throw_statement: $ => seq(
