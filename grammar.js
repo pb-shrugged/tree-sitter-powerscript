@@ -572,7 +572,7 @@ export default grammar({
         seq(
           $.end_keyword,
           $.for_keyword,
-        )
+        ),
       ),
       optional($.statement_separation),
     ),
@@ -770,7 +770,7 @@ export default grammar({
       seq(
         optional(seq(
           alias($.member_access_object, $.method_object),
-          alias('.', $.operator)
+          alias('.', $.operator),
         )),
         repeat(
           choice(
