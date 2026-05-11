@@ -143,12 +143,14 @@ end on
             (call_statement
               (call_keyword)
               (ancestor_name)
-              (event_name))))
+              (event_name
+                (identifier)))))
         (statement
           (inline_statement
             (expression_statement
               (method_invocation
-                (method_name)
+                (method_name
+                  (identifier))
                 (argument_list
                   (open_parenthesis)
                   (r_value_expression
@@ -172,7 +174,8 @@ end on
           (inline_statement
             (expression_statement
               (method_invocation
-                (method_name)
+                (method_name
+                  (identifier))
                 (argument_list
                   (open_parenthesis)
                   (r_value_expression
@@ -188,7 +191,8 @@ end on
             (call_statement
               (call_keyword)
               (ancestor_name)
-              (event_name)))))
+              (event_name
+                (identifier))))))
       (on_event_definition_statement_end
         (end_keyword)
         (on_keyword)))))

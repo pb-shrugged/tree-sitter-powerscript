@@ -115,3 +115,63 @@ end subroutine
       (subroutine_definition_statement_end
         (end_keyword)
         (subroutine_keyword)))))
+
+===
+BINARY DATA SECTION
+===
+
+Start of PowerBuilder Binary Data Section : Do NOT Edit
+05pfc_u_oc.bin
+2B00000600e011cfd0e11ab1a1000000000000000000000000000000000003003e0009fffe
+15pfc_u_oc.bin
+End of PowerBuilder Binary Data Section : No Source Expected After This Point
+
+---
+
+(source_file
+  (class_file
+    (binary_data_section)))
+
+===
+IDENTIFIER STARTING WITH HASH
+===
+
+global subroutine test ();
+integer #debug_counter
+#debug_counter = 1
+end subroutine
+
+---
+
+(source_file
+  (class_file
+    (function_definition
+      (subroutine_definition_statement
+        (global_keyword)
+        (subroutine_keyword)
+        (subroutine_name)
+        (parameter_list
+          (open_parenthesis)
+          (close_parenthesis))
+        (statement_separation))
+      (subroutine_definition_block
+        (statement
+          (local_variable_declaration_statement
+            (local_variable_declaration
+              (variable_type
+                (primitive_type))
+              (variable_declaration_list
+                (variable_declaration
+                  (variable_name))))))
+        (statement
+          (inline_statement
+            (assignment_statement
+              (l_value
+                (identifier_expression
+                  (identifier)))
+              (operator)
+              (r_value
+                (integer_literal))))))
+      (subroutine_definition_statement_end
+        (end_keyword)
+        (subroutine_keyword)))))

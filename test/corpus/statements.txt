@@ -38,7 +38,8 @@ end subroutine
                 (inline_statement
                   (expression_statement
                     (method_invocation
-                      (method_name)
+                      (method_name
+                        (identifier))
                       (argument_list
                         (open_parenthesis)
                         (r_value_expression
@@ -59,7 +60,8 @@ end subroutine
                 (inline_statement
                   (expression_statement
                     (method_invocation
-                      (method_name)
+                      (method_name
+                        (identifier))
                       (argument_list
                         (open_parenthesis)
                         (r_value_expression
@@ -78,7 +80,8 @@ end subroutine
                 (inline_statement
                   (expression_statement
                     (method_invocation
-                      (method_name)
+                      (method_name
+                        (identifier))
                       (argument_list
                         (open_parenthesis)
                         (r_value_expression
@@ -153,7 +156,8 @@ end subroutine
               (operator)
               (r_value
                 (method_invocation
-                  (method_name)
+                  (method_name
+                    (identifier))
                   (argument_list
                     (open_parenthesis)
                     (close_parenthesis)))))))
@@ -164,14 +168,14 @@ end subroutine
                 (array_access
                   (array_name
                     (object
-                      (l_value_expression
-                        (field_access
-                          (object
-                            (l_value_expression
-                              (identifier_expression
-                                (identifier))))
-                          (field_name))))
-                    (field_name))
+                      (field_access
+                        (object
+                          (identifier_expression
+                            (identifier)))
+                        (field_name
+                          (identifier))))
+                    (field_name
+                      (identifier)))
                   (open_brackets)
                   (array_index
                     (l_value_expression
@@ -225,7 +229,8 @@ end subroutine
                   (identifier_expression
                     (identifier))))
               (control_name)
-              (event_name))))
+              (event_name
+                (identifier)))))
         (statement
           (inline_statement
             (call_statement
@@ -234,7 +239,8 @@ end subroutine
                 (l_value_expression
                   (identifier_expression
                     (identifier))))
-              (event_name)))))
+              (event_name
+                (open_keyword))))))
       (subroutine_definition_statement_end
         (end_keyword)
         (subroutine_keyword)))))
@@ -590,7 +596,8 @@ end subroutine
                 (inline_statement
                   (expression_statement
                     (method_invocation
-                      (method_name)
+                      (method_name
+                        (identifier))
                       (argument_list
                         (open_parenthesis)
                         (r_value_expression
@@ -645,7 +652,8 @@ end subroutine
                 (inline_statement
                   (expression_statement
                     (method_invocation
-                      (method_name)
+                      (method_name
+                        (identifier))
                       (argument_list
                         (open_parenthesis)
                         (r_value_expression
@@ -689,7 +697,8 @@ end subroutine
                 (inline_statement
                   (expression_statement
                     (method_invocation
-                      (method_name)
+                      (method_name
+                        (identifier))
                       (argument_list
                         (open_parenthesis)
                         (r_value_expression
@@ -744,7 +753,8 @@ end subroutine
                 (inline_statement
                   (expression_statement
                     (method_invocation
-                      (method_name)
+                      (method_name
+                        (identifier))
                       (argument_list
                         (open_parenthesis)
                         (r_value_expression
@@ -976,7 +986,8 @@ end subroutine
           (inline_statement
             (expression_statement
               (method_invocation
-                (method_name)
+                (method_name
+                  (identifier))
                 (argument_list
                   (open_parenthesis)
                   (close_parenthesis)))))))
@@ -1075,7 +1086,8 @@ end subroutine
                 (inline_statement
                   (expression_statement
                     (method_invocation
-                      (method_name)
+                      (method_name
+                        (identifier))
                       (argument_list
                         (open_parenthesis)
                         (r_value_expression
@@ -1100,7 +1112,8 @@ end subroutine
                   (inline_statement
                     (expression_statement
                       (method_invocation
-                        (method_name)
+                        (method_name
+                          (identifier))
                         (argument_list
                           (open_parenthesis)
                           (r_value_expression
@@ -1114,11 +1127,11 @@ end subroutine
                     (expression_statement
                       (method_invocation
                         (method_object
-                          (l_value_expression
-                            (identifier_expression
-                              (identifier))))
+                          (identifier_expression
+                            (identifier)))
                         (operator)
-                        (method_name)
+                        (method_name
+                          (identifier))
                         (argument_list
                           (open_parenthesis)
                           (r_value_expression
@@ -1147,7 +1160,8 @@ end subroutine
                   (inline_statement
                     (expression_statement
                       (method_invocation
-                        (method_name)
+                        (method_name
+                          (identifier))
                         (argument_list
                           (open_parenthesis)
                           (r_value_expression
@@ -1162,7 +1176,8 @@ end subroutine
                   (inline_statement
                     (expression_statement
                       (method_invocation
-                        (method_name)
+                        (method_name
+                          (identifier))
                         (argument_list
                           (open_parenthesis)
                           (r_value_expression
@@ -1174,7 +1189,8 @@ end subroutine
                   (inline_statement
                     (expression_statement
                       (method_invocation
-                        (method_name)
+                        (method_name
+                          (identifier))
                         (argument_list
                           (open_parenthesis)
                           (r_value_expression
@@ -1199,7 +1215,8 @@ end subroutine
             (if_case_statement
               (expression_statement
                 (method_invocation
-                  (method_name)
+                  (method_name
+                    (identifier))
                   (argument_list
                     (open_parenthesis)
                     (close_parenthesis)))))))
@@ -1217,7 +1234,8 @@ end subroutine
             (if_case_statement
               (expression_statement
                 (method_invocation
-                  (method_name)
+                  (method_name
+                    (identifier))
                   (argument_list
                     (open_parenthesis)
                     (close_parenthesis)))))
@@ -1225,7 +1243,8 @@ end subroutine
             (else_case_statement
               (expression_statement
                 (method_invocation
-                  (method_name)
+                  (method_name
+                    (identifier))
                   (argument_list
                     (open_parenthesis)
                     (close_parenthesis))))))))
@@ -1378,7 +1397,8 @@ end subroutine
                 (inline_statement
                   (expression_statement
                     (method_invocation
-                      (method_name)
+                      (method_name
+                        (identifier))
                       (argument_list
                         (open_parenthesis)
                         (close_parenthesis)))))))
@@ -1395,7 +1415,8 @@ end subroutine
                   (inline_statement
                     (expression_statement
                       (method_invocation
-                        (method_name)
+                        (method_name
+                          (identifier))
                         (argument_list
                           (open_parenthesis)
                           (close_parenthesis))))))))
@@ -1412,7 +1433,8 @@ end subroutine
                   (inline_statement
                     (expression_statement
                       (method_invocation
-                        (method_name)
+                        (method_name
+                          (identifier))
                         (argument_list
                           (open_parenthesis)
                           (close_parenthesis))))))))
@@ -1423,7 +1445,8 @@ end subroutine
                   (inline_statement
                     (expression_statement
                       (method_invocation
-                        (method_name)
+                        (method_name
+                          (identifier))
                         (argument_list
                           (open_parenthesis)
                           (close_parenthesis))))))))
@@ -1494,7 +1517,8 @@ end subroutine
                   (variable_name)
                   (initial_value
                     (method_invocation
-                      (method_name)
+                      (method_name
+                        (identifier))
                       (argument_list
                         (open_parenthesis)
                         (close_parenthesis)))))))))
@@ -1508,7 +1532,8 @@ end subroutine
                   (variable_name)
                   (initial_value
                     (method_invocation
-                      (method_name)
+                      (method_name
+                        (identifier))
                       (argument_list
                         (open_parenthesis)
                         (close_parenthesis)))))
@@ -1525,7 +1550,8 @@ end subroutine
                   (variable_name)
                   (initial_value
                     (method_invocation
-                      (method_name)
+                      (method_name
+                        (identifier))
                       (argument_list
                         (open_parenthesis)
                         (close_parenthesis)))))
@@ -1566,11 +1592,11 @@ end subroutine
             (expression_statement
               (method_invocation
                 (method_object
-                  (l_value_expression
-                    (identifier_expression
-                      (identifier))))
+                  (identifier_expression
+                    (identifier)))
                 (operator)
-                (method_name)
+                (method_name
+                  (identifier))
                 (argument_list
                   (open_parenthesis)
                   (close_parenthesis))))))
@@ -1579,14 +1605,14 @@ end subroutine
             (expression_statement
               (method_invocation
                 (method_object
-                  (l_value_expression
-                    (identifier_expression
-                      (identifier))))
+                  (identifier_expression
+                    (identifier)))
                 (operator)
                 (method_type)
                 (call_type)
                 (when_type)
-                (method_name)
+                (method_name
+                  (identifier))
                 (argument_list
                   (open_parenthesis)
                   (r_value_expression
@@ -1603,14 +1629,14 @@ end subroutine
             (expression_statement
               (method_invocation
                 (method_object
-                  (l_value_expression
-                    (identifier_expression
-                      (identifier))))
+                  (identifier_expression
+                    (identifier)))
                 (operator)
                 (method_type)
                 (call_type)
                 (when_type)
-                (method_name)
+                (method_name
+                  (identifier))
                 (argument_list
                   (open_parenthesis)
                   (r_value_expression
@@ -1712,7 +1738,8 @@ end subroutine
             (expression_statement
               (method_invocation
                 (operator)
-                (method_name)
+                (method_name
+                  (identifier))
                 (argument_list
                   (open_parenthesis)
                   (r_value_expression
@@ -1727,4 +1754,3 @@ end subroutine
       (subroutine_definition_statement_end
         (end_keyword)
         (subroutine_keyword)))))
-        

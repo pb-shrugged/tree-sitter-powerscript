@@ -605,11 +605,11 @@ end on
             (expression_statement
               (method_invocation
                 (method_object
-                  (l_value_expression
-                    (identifier_expression
-                      (identifier))))
+                  (identifier_expression
+                    (identifier)))
                 (operator)
-                (method_name)
+                (method_name
+                  (identifier))
                 (argument_list
                   (open_parenthesis)
                   (r_value_expression
@@ -786,7 +786,8 @@ end on
                 (field_access
                   (object
                     (this_keyword))
-                  (field_name)))
+                  (field_name
+                    (identifier))))
               (create_keyword)
               (type
                 (custom_type))))))
@@ -859,7 +860,8 @@ end on
                   (field_access
                     (object
                       (this_keyword))
-                    (field_name))))
+                    (field_name
+                      (identifier)))))
               (close_parenthesis)))))
       (on_event_definition_statement_end
         (end_keyword)
@@ -892,7 +894,8 @@ end on
           (inline_statement
             (expression_statement
               (method_invocation
-                (method_name)
+                (method_name
+                  (identifier))
                 (argument_list
                   (open_parenthesis)
                   (r_value_expression
@@ -902,11 +905,11 @@ end on
                   (r_value_expression
                     (method_invocation
                       (method_object
-                        (l_value_expression
-                          (identifier_expression
-                            (identifier))))
+                        (identifier_expression
+                          (identifier)))
                       (operator)
-                      (method_name)
+                      (method_name
+                        (identifier))
                       (argument_list
                         (open_parenthesis)
                         (close_parenthesis))))
@@ -1006,7 +1009,8 @@ end on
             (call_statement
               (call_keyword)
               (ancestor_name)
-              (event_name)))))
+              (event_name
+                (identifier))))))
       (on_event_definition_statement_end
         (end_keyword)
         (on_keyword)))
@@ -1021,7 +1025,8 @@ end on
             (call_statement
               (call_keyword)
               (ancestor_name)
-              (event_name)))))
+              (event_name
+                (identifier))))))
       (on_event_definition_statement_end
         (end_keyword)
         (on_keyword)))))

@@ -1147,10 +1147,10 @@ end subroutine
                   (array_access
                     (array_name
                       (object
-                        (l_value_expression
-                          (identifier_expression
-                            (identifier))))
-                      (field_name))
+                        (identifier_expression
+                          (identifier)))
+                      (field_name
+                        (identifier)))
                     (open_brackets)
                     (array_index
                       (integer_literal))
@@ -1160,7 +1160,8 @@ end subroutine
               (choose_case_clause_condition
                 (r_value_expression
                   (enumetation_datatype
-                    (enum_name))))
+                    (enum_name
+                      (identifier)))))
               (choose_case_block
                 (statement
                   (inline_statement
@@ -1171,7 +1172,8 @@ end subroutine
                       (operator)
                       (r_value
                         (method_invocation
-                          (method_name)
+                          (method_name
+                            (identifier))
                           (argument_list
                             (open_parenthesis)
                             (r_value_expression
@@ -1186,7 +1188,8 @@ end subroutine
               (choose_case_clause_condition
                 (r_value_expression
                   (enumetation_datatype
-                    (enum_name))))
+                    (enum_name
+                      (identifier)))))
               (choose_case_block
                 (statement
                   (inline_statement
@@ -1197,7 +1200,8 @@ end subroutine
                       (operator)
                       (r_value
                         (method_invocation
-                          (method_name)
+                          (method_name
+                            (identifier))
                           (argument_list
                             (open_parenthesis)
                             (r_value_expression
@@ -1278,7 +1282,8 @@ end subroutine
           (inline_statement
             (expression_statement
               (method_invocation
-                (method_name)
+                (method_name
+                  (identifier))
                 (argument_list
                   (open_parenthesis)
                   (r_value_expression
@@ -1317,6 +1322,48 @@ end subroutine
             (close_cursor_procedure_statement
               (close_keyword)
               (cursor_procedure_name)
+              (statement_separation)))))
+      (subroutine_definition_statement_end
+        (end_keyword)
+        (subroutine_keyword)))))
+
+===
+PREPARE statement with using
+===
+
+global subroutine test ();
+
+prepare sqlsa from :ls_sqlstatement using this;
+
+end subroutine
+
+---
+
+(source_file
+  (class_file
+    (function_definition
+      (subroutine_definition_statement
+        (global_keyword)
+        (subroutine_keyword)
+        (subroutine_name)
+        (parameter_list
+          (open_parenthesis)
+          (close_parenthesis))
+        (statement_separation))
+      (subroutine_definition_block
+        (statement
+          (sql_statement
+            (prepare_sql_statement
+              (prepare_keyword)
+              (dynamic_staging_area)
+              (from_keyword)
+              (sql_statement
+                (l_value_expression
+                  (identifier_expression
+                    (identifier))))
+              (using_transaction_statement
+                (using_keyword)
+                (transaction_name))
               (statement_separation)))))
       (subroutine_definition_statement_end
         (end_keyword)

@@ -507,7 +507,8 @@ end event
           (inline_statement
             (expression_statement
               (method_invocation
-                (method_name)
+                (method_name
+                  (primitive_type))
                 (argument_list
                   (open_parenthesis)
                   (r_value_expression
@@ -544,7 +545,8 @@ end event
           (inline_statement
             (expression_statement
               (method_invocation
-                (method_name)
+                (method_name
+                  (primitive_type))
                 (argument_list
                   (open_parenthesis)
                   (r_value_expression
@@ -778,7 +780,8 @@ end on
                 (field_access
                   (object
                     (this_keyword))
-                  (field_name)))
+                  (field_name
+                    (identifier))))
               (create_keyword)
               (type
                 (custom_type))))))
@@ -851,7 +854,8 @@ end on
                   (field_access
                     (object
                       (this_keyword))
-                    (field_name))))
+                    (field_name
+                      (identifier)))))
               (close_parenthesis)))))
       (on_event_definition_statement_end
         (end_keyword)
@@ -1151,3 +1155,27 @@ end on;
         (end_keyword)
         (on_keyword))
       (statement_separation))))
+
+===
+CLASS TYPE definition 2
+===
+
+type cb_test from w_test`cb_test within w_test
+end type
+
+---
+
+(source_file
+  (class_file
+    (class_type_definition
+      (class_type_definition_statement
+        (type_keyword)
+        (class_type_name)
+        (from_keyword)
+        (ancenstor_type_name_parent)
+        (ancenstor_type_name)
+        (within_keyword)
+        (parent_class))
+      (end_type_declaration_statement
+        (end_keyword)
+        (type_keyword)))))
