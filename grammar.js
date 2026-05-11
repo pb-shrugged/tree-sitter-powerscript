@@ -43,11 +43,8 @@ export default grammar({
   ],
 
   conflicts: $ => [
-    [$.expression_statement, $.r_value_expression],
     [$.parenthesized_expression, $.destroy_statement],
     [$.halt_statement],
-    [$.assignment_statement, $.create_statement, $.r_value_expression],
-    [$.for_loop_statement, $.r_value_expression],
     [$.return_statement],
     [$.scriptable_block],
   ],
@@ -72,8 +69,15 @@ export default grammar({
       $.event_definition,
       $.function_definition,
       $.on_event_definition,
-      // $.inner_class_type_definition,
+      $.binary_data_section,
     )),
+
+    binary_data_section: _ => token(prec(PREC.KEYWORD, seq(
+      'Start of PowerBuilder Binary Data Section : Do NOT Edit',
+      /\r?\n/,
+      repeat(seq(/[^\r\n]*/, /\r?\n/)),
+      'End of PowerBuilder Binary Data Section : No Source Expected After This Point',
+    ))),
 
     forward_declaration_section: $ => seq(
       alias($.forward_keyword, $.forward_declaration_statement),
@@ -710,7 +714,7 @@ export default grammar({
       alias(choice($.super_keyword, $.r_value_expression), $.ancestor_name),
       optional(seq('`', alias($.identifier, $.control_name))),
       '::',
-      alias($.valid_method_name, $.event_name),
+      alias($.valid_identifier, $.event_name),
     ),
 
     continue_statement: $ => $.continue_keyword,
@@ -762,29 +766,38 @@ export default grammar({
       ),
     ),
 
-    method_invocation: $ => prec(PREC.METHOD_INVOCATION, seq(
-      optional(choice(
-        seq(
-          alias(choice($.r_value_expression), $.method_object),
-          alias('.', $.operator),
+    method_invocation: $ => prec(PREC.METHOD_INVOCATION, choice(
+      seq(
+        optional(seq(
+          alias($.member_access_object, $.method_object),
+          alias('.', $.operator)
+        )),
+        repeat(
+          choice(
+            alias(choice($.function_keyword, $.event_keyword), $.method_type),
+            alias(choice($.static_keyword, $.dynamic_keyword), $.call_type),
+            alias(choice($.trigger_keyword, $.post_keyword), $.when_type),
+          ),
         ),
-        seq(
-          optional($.super_keyword),
-          alias('::', $.operator),
-        ),
-      )),
-      repeat(
-        choice(
-          alias(choice($.function_keyword, $.event_keyword), $.method_type),
-          alias(choice($.static_keyword, $.dynamic_keyword), $.call_type),
-          alias(choice($.trigger_keyword, $.post_keyword), $.when_type),
-        ),
+        alias($.valid_identifier, $.method_name),
+        $.argument_list,
       ),
-      alias($.valid_method_name, $.method_name),
-      $.argument_list,
+      seq(
+        optional($.super_keyword),
+        alias('::', $.operator),
+        repeat(
+          choice(
+            alias(choice($.function_keyword, $.event_keyword), $.method_type),
+            alias(choice($.static_keyword, $.dynamic_keyword), $.call_type),
+            alias(choice($.trigger_keyword, $.post_keyword), $.when_type),
+          ),
+        ),
+        alias($.valid_identifier, $.method_name),
+        $.argument_list,
+      ),
     )),
 
-    valid_method_name: $ => choice($.identifier, $.primitive_type, $.close_keyword, $.open_keyword),
+    valid_identifier: $ => choice($.identifier, $.primitive_type, $.close_keyword, $.open_keyword),
 
     argument_list: $ => seq(
       $.open_parenthesis,
@@ -800,22 +813,20 @@ export default grammar({
 
     l_value_expression: $ => choice(
       $.identifier_expression,
-      $.field_access,
       $.array_access,
+      $.field_access,
     ),
 
     r_value_expression: $ => choice(
+      $.method_invocation,
       $.l_value_expression,
-
       $.binary_expression,
       $.unary_expression,
-
       $._literal,
       $.array_literal,
       $.this_keyword,
       $.parent_keyword,
       $.enumetation_datatype,
-      $.method_invocation,
       $.parenthesized_expression,
     ),
 
@@ -858,9 +869,9 @@ export default grammar({
 
     array_access: $ => prec(PREC.FIELD_ACCESS, seq(
       alias(choice(
+        $.method_invocation,
         $.identifier_expression,
         $.field_access,
-        $.method_invocation,
         $.parenthesized_expression,
       ), $.array_name),
       seq(
@@ -872,22 +883,29 @@ export default grammar({
 
     enumetation_datatype: $ => seq(
       alias(
-        choice(
-          $.identifier,
-          $.primitive_type,
-          $.close_keyword,
-        ),
+        $.valid_identifier,
         $.enum_name,
       ),
       '!',
     ),
 
+    member_access_object: $ => choice(
+      $.method_invocation,
+      $.this_keyword,
+      $.parent_keyword,
+      $.identifier_expression,
+      $.array_access,
+      $.field_access,
+      $.parenthesized_expression,
+    ),
+
     field_access: $ => prec(PREC.FIELD_ACCESS, seq(
-      alias(choice($.r_value_expression), $.object),
+      alias($.member_access_object, $.object),
       '.',
-      alias($.identifier, $.field_name),
+      alias($.valid_identifier, $.field_name),
       optional($.array_suffix_ref),
-    )),
+    ),
+    ),
 
     array_suffix_ref: _ => /\[[ \t]*\]/,
 
@@ -1380,6 +1398,7 @@ export default grammar({
         alias($.string_literal, $.sql_statement),
         seq(':', alias($.r_value_expression, $.sql_statement)),
       ),
+      optional($.using_transaction_statement),
       $.statement_separation,
     ),
 

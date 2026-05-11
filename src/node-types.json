@@ -824,6 +824,10 @@
       "required": true,
       "types": [
         {
+          "type": "binary_data_section",
+          "named": true
+        },
+        {
           "type": "class_type_definition",
           "named": true
         },
@@ -2032,7 +2036,29 @@
   {
     "type": "enum_name",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "close_keyword",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "open_keyword",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "enumetation_datatype",
@@ -2187,6 +2213,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "open_keyword",
           "named": true
         },
         {
@@ -2577,6 +2607,33 @@
         },
         {
           "type": "object",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "field_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "close_keyword",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "open_keyword",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
           "named": true
         }
       ]
@@ -4149,6 +4206,10 @@
           "named": true
         },
         {
+          "type": "open_keyword",
+          "named": true
+        },
+        {
           "type": "primitive_type",
           "named": true
         }
@@ -4164,35 +4225,15 @@
       "required": true,
       "types": [
         {
-          "type": "array_literal",
+          "type": "array_access",
           "named": true
         },
         {
-          "type": "binary_expression",
+          "type": "field_access",
           "named": true
         },
         {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "date_literal",
-          "named": true
-        },
-        {
-          "type": "decimal_literal",
-          "named": true
-        },
-        {
-          "type": "enumetation_datatype",
-          "named": true
-        },
-        {
-          "type": "integer_literal",
-          "named": true
-        },
-        {
-          "type": "l_value_expression",
+          "type": "identifier_expression",
           "named": true
         },
         {
@@ -4208,23 +4249,7 @@
           "named": true
         },
         {
-          "type": "real_literal",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
           "type": "this_keyword",
-          "named": true
-        },
-        {
-          "type": "time_literal",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
           "named": true
         }
       ]
@@ -4259,35 +4284,15 @@
       "required": true,
       "types": [
         {
-          "type": "array_literal",
+          "type": "array_access",
           "named": true
         },
         {
-          "type": "binary_expression",
+          "type": "field_access",
           "named": true
         },
         {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "date_literal",
-          "named": true
-        },
-        {
-          "type": "decimal_literal",
-          "named": true
-        },
-        {
-          "type": "enumetation_datatype",
-          "named": true
-        },
-        {
-          "type": "integer_literal",
-          "named": true
-        },
-        {
-          "type": "l_value_expression",
+          "type": "identifier_expression",
           "named": true
         },
         {
@@ -4303,23 +4308,7 @@
           "named": true
         },
         {
-          "type": "real_literal",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
           "type": "this_keyword",
-          "named": true
-        },
-        {
-          "type": "time_literal",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
           "named": true
         }
       ]
@@ -4590,6 +4579,10 @@
         },
         {
           "type": "statement_separation",
+          "named": true
+        },
+        {
+          "type": "using_transaction_statement",
           "named": true
         }
       ]
@@ -6438,6 +6431,10 @@
     "named": false
   },
   {
+    "type": "binary_data_section",
+    "named": true
+  },
+  {
     "type": "blob",
     "named": false
   },
@@ -6673,10 +6670,6 @@
   {
     "type": "fetch",
     "named": false
-  },
-  {
-    "type": "field_name",
-    "named": true
   },
   {
     "type": "file_name",
