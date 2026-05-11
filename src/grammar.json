@@ -3942,51 +3942,15 @@
       ]
     },
     "destroy_statement": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "destroy_keyword"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "open_parenthesis"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "r_value_expression"
-              },
-              "named": true,
-              "value": "variable_name"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "close_parenthesis"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "destroy_keyword"
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "destroy_keyword"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "r_value_expression"
-              },
-              "named": true,
-              "value": "variable_name"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "r_value_expression"
         }
       ]
     },
@@ -9054,10 +9018,6 @@
     }
   ],
   "conflicts": [
-    [
-      "parenthesized_expression",
-      "destroy_statement"
-    ],
     [
       "halt_statement"
     ],

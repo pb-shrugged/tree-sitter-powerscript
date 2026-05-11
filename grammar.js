@@ -43,7 +43,6 @@ export default grammar({
   ],
 
   conflicts: $ => [
-    [$.parenthesized_expression, $.destroy_statement],
     [$.halt_statement],
     [$.return_statement],
   ],
@@ -735,10 +734,7 @@ export default grammar({
       ),
     ),
 
-    destroy_statement: $ => choice(
-      seq($.destroy_keyword, $.open_parenthesis, alias($.r_value_expression, $.variable_name), $.close_parenthesis),
-      seq($.destroy_keyword, alias($.r_value_expression, $.variable_name)),
-    ),
+    destroy_statement: $ => seq($.destroy_keyword, $.r_value_expression),
 
     exit_statement: $ => $.exit_keyword,
 

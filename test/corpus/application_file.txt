@@ -804,65 +804,77 @@ end on
           (inline_statement
             (destroy_statement
               (destroy_keyword)
-              (open_parenthesis)
-              (variable_name
-                (l_value_expression
-                  (identifier_expression
-                    (identifier))))
-              (close_parenthesis))))
+              (r_value_expression
+                (parenthesized_expression
+                  (open_parenthesis)
+                  (r_value_expression
+                    (l_value_expression
+                      (identifier_expression
+                        (identifier))))
+                  (close_parenthesis))))))
         (statement
           (inline_statement
             (destroy_statement
               (destroy_keyword)
-              (open_parenthesis)
-              (variable_name
-                (l_value_expression
-                  (identifier_expression
-                    (identifier))))
-              (close_parenthesis))))
+              (r_value_expression
+                (parenthesized_expression
+                  (open_parenthesis)
+                  (r_value_expression
+                    (l_value_expression
+                      (identifier_expression
+                        (identifier))))
+                  (close_parenthesis))))))
         (statement
           (inline_statement
             (destroy_statement
               (destroy_keyword)
-              (open_parenthesis)
-              (variable_name
-                (l_value_expression
-                  (identifier_expression
-                    (identifier))))
-              (close_parenthesis))))
+              (r_value_expression
+                (parenthesized_expression
+                  (open_parenthesis)
+                  (r_value_expression
+                    (l_value_expression
+                      (identifier_expression
+                        (identifier))))
+                  (close_parenthesis))))))
         (statement
           (inline_statement
             (destroy_statement
               (destroy_keyword)
-              (open_parenthesis)
-              (variable_name
-                (l_value_expression
-                  (identifier_expression
-                    (identifier))))
-              (close_parenthesis))))
+              (r_value_expression
+                (parenthesized_expression
+                  (open_parenthesis)
+                  (r_value_expression
+                    (l_value_expression
+                      (identifier_expression
+                        (identifier))))
+                  (close_parenthesis))))))
         (statement
           (inline_statement
             (destroy_statement
               (destroy_keyword)
-              (open_parenthesis)
-              (variable_name
-                (l_value_expression
-                  (identifier_expression
-                    (identifier))))
-              (close_parenthesis))))
+              (r_value_expression
+                (parenthesized_expression
+                  (open_parenthesis)
+                  (r_value_expression
+                    (l_value_expression
+                      (identifier_expression
+                        (identifier))))
+                  (close_parenthesis))))))
         (statement
           (inline_statement
             (destroy_statement
               (destroy_keyword)
-              (open_parenthesis)
-              (variable_name
-                (l_value_expression
-                  (field_access
-                    (object
-                      (this_keyword))
-                    (field_name
-                      (identifier)))))
-              (close_parenthesis)))))
+              (r_value_expression
+                (parenthesized_expression
+                  (open_parenthesis)
+                  (r_value_expression
+                    (l_value_expression
+                      (field_access
+                        (object
+                          (this_keyword))
+                        (field_name
+                          (identifier)))))
+                  (close_parenthesis)))))))
       (on_event_definition_statement_end
         (end_keyword)
         (on_keyword)))

@@ -1599,19 +1599,11 @@
       "required": true,
       "types": [
         {
-          "type": "close_parenthesis",
-          "named": true
-        },
-        {
           "type": "destroy_keyword",
           "named": true
         },
         {
-          "type": "open_parenthesis",
-          "named": true
-        },
-        {
-          "type": "variable_name",
+          "type": "r_value_expression",
           "named": true
         }
       ]
