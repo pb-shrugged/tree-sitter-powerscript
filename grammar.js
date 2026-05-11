@@ -46,7 +46,6 @@ export default grammar({
     [$.parenthesized_expression, $.destroy_statement],
     [$.halt_statement],
     [$.return_statement],
-    [$.scriptable_block],
   ],
 
   rules: {
@@ -105,7 +104,10 @@ export default grammar({
       $.type_keyword,
       alias($.identifier, $.class_type_name),
       $.from_keyword,
-      alias($.identifier, $.ancenstor_type_name),
+      seq(
+        optional(seq(alias($.identifier, $.ancenstor_type_name_parent), '`')),
+        alias($.identifier, $.ancenstor_type_name),
+      ),
       optional(seq($.native_keyword, alias($.string_literal, $.dll_path))),
       optional($.autoinstantiate_keyword),
       optional(seq(
@@ -268,9 +270,11 @@ export default grammar({
 
     on_event_definition_statement: $ => seq(
       $.on_keyword,
-      alias($.identifier, $.class_name),
-      '.',
-      choice($.create_keyword, $.destroy_keyword),
+      optional(seq(
+        alias($.identifier, $.class_name),
+        '.',
+      )),
+      choice($.valid_identifier, $.create_keyword, $.destroy_keyword),
     ),
 
     on_event_definition_statement_end: $ => seq($.end_keyword, $.on_keyword),
@@ -476,16 +480,14 @@ export default grammar({
     ),
 
     conditional_compilation_statement: $ => seq(
-      '#',
-      $.if_keyword,
+      alias(token(prec(PREC.KEYWORD + 1, /#[ \t]*if/i)), $.if_keyword),
       optional($.not_keyword),
       caseInsensitiveAlias('defined'),
       alias($.identifier, $.predefined_symbol),
       $.then_keyword,
       optional(alias($.scriptable_block, $.conditional_compilation_if_block)),
       optional(seq(
-        '#',
-        $.elseif_keyword,
+        alias(token(prec(PREC.KEYWORD + 1, /#[ \t]*elseif/i)), $.elseif_keyword),
         optional($.not_keyword),
         caseInsensitiveAlias('defined'),
         alias($.identifier, $.predefined_symbol),
@@ -493,12 +495,10 @@ export default grammar({
         optional(alias($.scriptable_block, $.conditional_compilation_elseif_block)),
       )),
       optional(seq(
-        '#',
-        $.else_keyword,
+        alias(token(prec(PREC.KEYWORD + 1, /#[ \t]*else/i)), $.else_keyword),
         optional(alias($.scriptable_block, $.conditional_compilation_else_block)),
       )),
-      '#',
-      $.end_keyword,
+      alias(token(prec(PREC.KEYWORD + 1, /#[ \t]*end/i)), $.end_keyword),
       $.if_keyword,
     ),
 
@@ -1132,7 +1132,7 @@ export default grammar({
       alias('srf', $.function_file_extension),
     ),
 
-    identifier: _ => /[a-zA-Z_][a-zA-Z0-9\-_$#%]*/,
+    identifier: _ => /[a-zA-Z_#][a-zA-Z0-9\-_$#%]*/,
 
     line_comment: _ => seq('//', token.immediate(prec(1, /.*/))),
     block_comment: _ => token(seq('/*', /[^*]*\*+([^/*][^*]*\*+)*/, '/')),
