@@ -42,11 +42,6 @@ export default grammar({
     $._inline_then_marker,
   ],
 
-  conflicts: $ => [
-    [$.halt_statement],
-    [$.return_statement],
-  ],
-
   rules: {
 
     source_file: $ => seq(
@@ -740,15 +735,15 @@ export default grammar({
 
     goto_statement: $ => seq($.goto_keyword, alias($.identifier, $.label)),
 
-    halt_statement: $ => seq($.halt_keyword, optional($.close_keyword)),
+    halt_statement: $ => prec.right(seq($.halt_keyword, optional($.close_keyword))),
 
-    return_statement: $ => choice(
+    return_statement: $ => prec.right(choice(
       prec.dynamic(1, seq(
         $.return_keyword,
         alias($.r_value_expression, $.return_value),
       )),
       $.return_keyword,
-    ),
+    )),
 
     throw_statement: $ => seq(
       $.throw_keyword,

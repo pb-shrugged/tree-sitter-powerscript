@@ -3977,56 +3977,64 @@
       ]
     },
     "halt_statement": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "halt_keyword"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "close_keyword"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        }
-      ]
-    },
-    "return_statement": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "PREC_DYNAMIC",
-          "value": 1,
-          "content": {
-            "type": "SEQ",
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "halt_keyword"
+          },
+          {
+            "type": "CHOICE",
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "return_keyword"
+                "name": "close_keyword"
               },
               {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "r_value_expression"
-                },
-                "named": true,
-                "value": "return_value"
+                "type": "BLANK"
               }
             ]
           }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "return_keyword"
-        }
-      ]
+        ]
+      }
+    },
+    "return_statement": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PREC_DYNAMIC",
+            "value": 1,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "return_keyword"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "r_value_expression"
+                  },
+                  "named": true,
+                  "value": "return_value"
+                }
+              ]
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "return_keyword"
+          }
+        ]
+      }
     },
     "throw_statement": {
       "type": "SEQ",
@@ -9017,14 +9025,7 @@
       "name": "line_continuation"
     }
   ],
-  "conflicts": [
-    [
-      "halt_statement"
-    ],
-    [
-      "return_statement"
-    ]
-  ],
+  "conflicts": [],
   "precedences": [],
   "externals": [
     {

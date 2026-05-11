@@ -1003,6 +1003,7 @@ HALT statement
 
 global subroutine test ();
 
+HALT
 HALT CLOSE
 
 end subroutine
@@ -1021,6 +1022,10 @@ end subroutine
           (close_parenthesis))
         (statement_separation))
       (subroutine_definition_block
+        (statement
+          (inline_statement
+            (halt_statement
+              (halt_keyword))))
         (statement
           (inline_statement
             (halt_statement
@@ -1260,6 +1265,8 @@ RETURN statement
 
 global subroutine test ();
 
+RETURN ::uf_test()
+RETURN (Arg1 + Arg2)
 RETURN Arg1/Arg2
 
 RETURN -1
@@ -1282,6 +1289,37 @@ end subroutine
           (close_parenthesis))
         (statement_separation))
       (subroutine_definition_block
+        (statement
+          (inline_statement
+            (return_statement
+              (return_keyword)
+              (return_value
+                (method_invocation
+                  (operator)
+                  (method_name
+                    (identifier))
+                  (argument_list
+                    (open_parenthesis)
+                    (close_parenthesis)))))))
+        (statement
+          (inline_statement
+            (return_statement
+              (return_keyword)
+              (return_value
+                (parenthesized_expression
+                  (open_parenthesis)
+                  (r_value_expression
+                    (binary_expression
+                      (left_expression
+                        (l_value_expression
+                          (identifier_expression
+                            (identifier))))
+                      (operator)
+                      (right_expression
+                        (l_value_expression
+                          (identifier_expression
+                            (identifier))))))
+                  (close_parenthesis))))))
         (statement
           (inline_statement
             (return_statement
