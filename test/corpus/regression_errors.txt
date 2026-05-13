@@ -119,6 +119,70 @@ end function
         (end_keyword)
         (function_keyword)))))
 
+==================
+NOT comparison precedence
+==================
+event test();
+
+lb_forward = (Not Lower(inv_findattrib.is_direction)='up')
+
+end event
+
+---
+
+(source_file
+  (class_file
+    (event_definition
+      (event_definition_statement
+        (event_declaration
+          (event_keyword)
+          (event_name)
+          (parameter_list
+            (open_parenthesis)
+            (close_parenthesis)))
+        (statement_separation))
+      (event_definition_block
+        (statement
+          (inline_statement
+            (assignment_statement
+              (l_value
+                (identifier_expression
+                  (identifier)))
+              (operator)
+              (r_value
+                (parenthesized_expression
+                  (open_parenthesis)
+                  (r_value_expression
+                    (unary_expression
+                      (operator)
+                      (r_value_expression
+                        (binary_expression
+                          (left_expression
+                            (method_invocation
+                              (method_name
+                                (identifier))
+                              (argument_list
+                                (open_parenthesis)
+                                (r_value_expression
+                                  (l_value_expression
+                                    (field_access
+                                      (object
+                                        (identifier_expression
+                                          (identifier)))
+                                      (field_name
+                                        (identifier)))))
+                                (close_parenthesis))))
+                          (operator)
+                          (right_expression
+                            (string_literal
+                              (single_quote)
+                              (string_content)
+                              (single_quote)))))))
+                  (close_parenthesis)))))))
+      (event_definition_statement_end
+        (end_keyword)
+        (event_keyword)))))
+
 =========================
 Inline if return value
 =========================

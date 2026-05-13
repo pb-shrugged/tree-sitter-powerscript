@@ -11,16 +11,17 @@
 const PREC = {
   OR: 1,
   AND: 2,
-  EQUALITY: 3,
-  RELATIONAL: 4,
-  ADDITIVE: 5,
-  MULTIPLICATIVE: 6,
-  EXPONENTIATION: 7,
-  UNARY: 8,
-  UPDATE_UNARY: 9,
-  FIELD_ACCESS: 10,
-  METHOD_INVOCATION: 11,
-  IMMEDIATE_CASE: 12,
+  NOT: 3,
+  EQUALITY: 4,
+  RELATIONAL: 5,
+  ADDITIVE: 6,
+  MULTIPLICATIVE: 7,
+  EXPONENTIATION: 8,
+  UNARY: 9,
+  UPDATE_UNARY: 10,
+  FIELD_ACCESS: 11,
+  METHOD_INVOCATION: 12,
+  IMMEDIATE_CASE: 13,
   KEYWORD: 0,
   IDENTIFIER_EXPRESSION: -1,
 };
@@ -850,10 +851,16 @@ export default grammar({
       }));
     },
 
-    unary_expression: $ => prec.left(PREC.UNARY, seq(
-      alias(choice($.not_keyword, '-', '+'), $.operator),
-      $.r_value_expression,
-    )),
+    unary_expression: $ => choice(
+      prec.left(PREC.NOT, seq(
+        alias($.not_keyword, $.operator),
+        $.r_value_expression,
+      )),
+      prec.left(PREC.UNARY, seq(
+        alias(choice('-', '+'), $.operator),
+        $.r_value_expression,
+      )),
+    ),
 
     array_literal: $ => seq(
       $.open_curly_brackets,
