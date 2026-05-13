@@ -41,6 +41,7 @@ export default grammar({
 
   externals: $ => [
     $._inline_then_marker,
+    $._inline_return_value_marker,
   ],
 
   rules: {
@@ -625,10 +626,24 @@ export default grammar({
       alias($.r_value_expression, $.condition),
       $.then_keyword,
       $._inline_then_marker,
-      alias($.inline_statement, $.if_case_statement),
-      optional(seq($.else_keyword, alias($.inline_statement, $.else_case_statement))),
+      alias($.inline_if_case_statement, $.if_case_statement),
+      optional(seq($.else_keyword, alias($.inline_if_case_statement, $.else_case_statement))),
       optional($.statement_separation),
     )),
+
+    inline_if_case_statement: $ => choice(
+      $.assignment_statement,
+      $.call_statement,
+      $.continue_statement,
+      $.create_statement,
+      $.destroy_statement,
+      $.exit_statement,
+      $.goto_statement,
+      $.halt_statement,
+      alias($.inline_return_statement, $.return_statement),
+      $.throw_statement,
+      $.expression_statement,
+    ),
 
     local_variable_declaration_statement: $ => seq(
       $.local_variable_declaration,
@@ -744,6 +759,15 @@ export default grammar({
         alias($.r_value_expression, $.return_value),
       )),
       $.return_keyword,
+    )),
+
+    inline_return_statement: $ => prec.right(choice(
+      $.return_keyword,
+      seq(
+        $.return_keyword,
+        $._inline_return_value_marker,
+        alias($.r_value_expression, $.return_value),
+      ),
     )),
 
     throw_statement: $ => seq(

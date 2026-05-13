@@ -268,6 +268,178 @@ end function
         (function_keyword)))))
 
 ==================
+Inline if return without value
+==================
+event pfc_editchanged(ref long al_row, ref dwobject adwo_obj, ref string as_data);
+
+if ib_performsearch=False or ii_currentindex <= 0 THEN return
+
+ls_searchcolname = adwo_obj.Name
+
+end event
+
+---
+
+(source_file
+  (class_file
+    (event_definition
+      (event_definition_statement
+        (event_declaration
+          (event_keyword)
+          (event_name)
+          (parameter_list
+            (open_parenthesis)
+            (parameter
+              (parameter_pass_by_type)
+              (type
+                (primitive_type))
+              (parameter_name))
+            (parameter
+              (parameter_pass_by_type)
+              (type
+                (custom_type))
+              (parameter_name))
+            (parameter
+              (parameter_pass_by_type)
+              (type
+                (primitive_type))
+              (parameter_name))
+            (close_parenthesis)))
+        (statement_separation))
+      (event_definition_block
+        (statement
+          (inline_if_statement
+            (if_keyword)
+            (condition
+              (binary_expression
+                (left_expression
+                  (binary_expression
+                    (left_expression
+                      (l_value_expression
+                        (identifier_expression
+                          (identifier))))
+                    (operator)
+                    (right_expression
+                      (boolean_literal
+                        (false_keyword)))))
+                (operator)
+                (right_expression
+                  (binary_expression
+                    (left_expression
+                      (l_value_expression
+                        (identifier_expression
+                          (identifier))))
+                    (operator)
+                    (right_expression
+                      (integer_literal))))))
+            (then_keyword)
+            (if_case_statement
+              (return_statement
+                (return_keyword)))))
+        (statement
+          (inline_statement
+            (assignment_statement
+              (l_value
+                (identifier_expression
+                  (identifier)))
+              (operator)
+              (r_value
+                (l_value_expression
+                  (field_access
+                    (object
+                      (identifier_expression
+                        (identifier)))
+                    (field_name
+                      (identifier)))))))))
+      (event_definition_statement_end
+        (end_keyword)
+        (event_keyword)))))
+
+==================
+Inline if return without value after trailing trivia
+==================
+event test();
+
+if lb_stop THEN return   
+ls_space = adwo_obj.Name
+
+if lb_stop THEN return // ignored
+ls_comment = adwo_obj.Name
+
+end event
+
+---
+
+(source_file
+  (class_file
+    (event_definition
+      (event_definition_statement
+        (event_declaration
+          (event_keyword)
+          (event_name)
+          (parameter_list
+            (open_parenthesis)
+            (close_parenthesis)))
+        (statement_separation))
+      (event_definition_block
+        (statement
+          (inline_if_statement
+            (if_keyword)
+            (condition
+              (l_value_expression
+                (identifier_expression
+                  (identifier))))
+            (then_keyword)
+            (if_case_statement
+              (return_statement
+                (return_keyword)))))
+        (statement
+          (inline_statement
+            (assignment_statement
+              (l_value
+                (identifier_expression
+                  (identifier)))
+              (operator)
+              (r_value
+                (l_value_expression
+                  (field_access
+                    (object
+                      (identifier_expression
+                        (identifier)))
+                    (field_name
+                      (identifier))))))))
+        (statement
+          (inline_if_statement
+            (if_keyword)
+            (condition
+              (l_value_expression
+                (identifier_expression
+                  (identifier))))
+            (then_keyword)
+            (if_case_statement
+              (return_statement
+                (return_keyword)))))
+        (line_comment)
+        (statement
+          (inline_statement
+            (assignment_statement
+              (l_value
+                (identifier_expression
+                  (identifier)))
+              (operator)
+              (r_value
+                (l_value_expression
+                  (field_access
+                    (object
+                      (identifier_expression
+                        (identifier)))
+                    (field_name
+                      (identifier)))))))))
+      (event_definition_statement_end
+        (end_keyword)
+        (event_keyword)))))
+
+==================
 Reserved words as custom types (function_object, structure)
 ==================
 global function integer test_fixes ();

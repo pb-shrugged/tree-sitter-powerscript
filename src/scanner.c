@@ -5,6 +5,7 @@
 
 enum TokenType {
   INLINE_THEN_MARKER,
+  INLINE_RETURN_VALUE_MARKER,
 };
 
 static void skip_horizontal_whitespace(TSLexer *lexer) {
@@ -119,6 +120,49 @@ static bool scan_inline_then_marker(TSLexer *lexer) {
   }
 }
 
+static bool scan_inline_return_value_marker(TSLexer *lexer) {
+  bool expects_continued_line = false;
+
+  lexer->mark_end(lexer);
+
+  for (;;) {
+    skip_horizontal_whitespace(lexer);
+    lexer->mark_end(lexer);
+
+    if (expects_continued_line) {
+      if (!consume_newline(lexer)) {
+        return false;
+      }
+      expects_continued_line = false;
+      lexer->mark_end(lexer);
+      continue;
+    }
+
+    if (consume_newline(lexer) || lexer->eof(lexer)) {
+      return false;
+    }
+
+    if (lexer->lookahead == '&') {
+      expects_continued_line = true;
+      lexer->advance(lexer, true);
+      lexer->mark_end(lexer);
+      continue;
+    }
+
+    if (lexer->lookahead == '/') {
+      if (skip_inline_block_comment(lexer)) {
+        lexer->mark_end(lexer);
+        continue;
+      }
+
+      return false;
+    }
+
+    lexer->result_symbol = INLINE_RETURN_VALUE_MARKER;
+    return true;
+  }
+}
+
 void *tree_sitter_powerscript_external_scanner_create(void) {
   return NULL;
 }
@@ -143,6 +187,10 @@ bool tree_sitter_powerscript_external_scanner_scan(void *payload, TSLexer *lexer
   (void)payload;
   if (valid_symbols[INLINE_THEN_MARKER]) {
     return scan_inline_then_marker(lexer);
+  }
+
+  if (valid_symbols[INLINE_RETURN_VALUE_MARKER]) {
+    return scan_inline_return_value_marker(lexer);
   }
 
   (void)lexer;
