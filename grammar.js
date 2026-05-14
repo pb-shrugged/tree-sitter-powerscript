@@ -621,7 +621,7 @@ export default grammar({
       optional(alias($.scriptable_block, $.else_block)),
     ),
 
-    inline_if_statement: $ => prec.left(seq(
+    inline_if_statement: $ => prec.right(PREC.IMMEDIATE_CASE, seq(
       $.if_keyword,
       alias($.r_value_expression, $.condition),
       $.then_keyword,

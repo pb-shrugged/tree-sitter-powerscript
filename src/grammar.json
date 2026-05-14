@@ -3320,8 +3320,8 @@
       ]
     },
     "inline_if_statement": {
-      "type": "PREC_LEFT",
-      "value": 0,
+      "type": "PREC_RIGHT",
+      "value": 13,
       "content": {
         "type": "SEQ",
         "members": [

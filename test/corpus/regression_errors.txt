@@ -590,6 +590,129 @@ end subroutine
         (end_keyword)
         (subroutine_keyword)))))
 
+===
+Inline IF else inside parent IF block
+===
+
+protected function integer of_retrievedetails (long al_row);
+If ll_rc >= 0 Then
+idw_Requestor.Event pfc_rowchanged ( )
+If ll_rc >0 Then li_rc = 1 Else li_rc = 0
+Else
+li_rc = ll_rc
+End If
+Return li_rc
+end function
+
+---
+
+(source_file
+  (class_file
+    (function_definition
+      (function_definition_statement
+        (access_modifier
+          (protected_keyword))
+        (function_keyword)
+        (return_type
+          (primitive_type))
+        (function_name)
+        (parameter_list
+          (open_parenthesis)
+          (parameter
+            (type
+              (primitive_type))
+            (parameter_name))
+          (close_parenthesis))
+        (statement_separation))
+      (function_definition_block
+        (statement
+          (if_statement
+            (if_then_statement
+              (if_keyword)
+              (condition
+                (binary_expression
+                  (left_expression
+                    (l_value_expression
+                      (identifier_expression
+                        (identifier))))
+                  (operator)
+                  (right_expression
+                    (integer_literal))))
+              (then_keyword))
+            (if_block
+              (statement
+                (inline_statement
+                  (expression_statement
+                    (method_invocation
+                      (method_object
+                        (identifier_expression
+                          (identifier)))
+                      (operator)
+                      (method_type)
+                      (method_name
+                        (identifier))
+                      (argument_list
+                        (open_parenthesis)
+                        (close_parenthesis))))))
+              (statement
+                (inline_if_statement
+                  (if_keyword)
+                  (condition
+                    (binary_expression
+                      (left_expression
+                        (l_value_expression
+                          (identifier_expression
+                            (identifier))))
+                      (operator)
+                      (right_expression
+                        (integer_literal))))
+                  (then_keyword)
+                  (if_case_statement
+                    (assignment_statement
+                      (l_value
+                        (identifier_expression
+                          (identifier)))
+                      (operator)
+                      (r_value
+                        (integer_literal))))
+                  (else_keyword)
+                  (else_case_statement
+                    (assignment_statement
+                      (l_value
+                        (identifier_expression
+                          (identifier)))
+                      (operator)
+                      (r_value
+                        (integer_literal)))))))
+            (else_clause
+              (else_keyword)
+              (else_block
+                (statement
+                  (inline_statement
+                    (assignment_statement
+                      (l_value
+                        (identifier_expression
+                          (identifier)))
+                      (operator)
+                      (r_value
+                        (l_value_expression
+                          (identifier_expression
+                            (identifier)))))))))
+            (if_then_statement_end
+              (end_keyword)
+              (if_keyword))))
+        (statement
+          (inline_statement
+            (return_statement
+              (return_keyword)
+              (return_value
+                (l_value_expression
+                  (identifier_expression
+                    (identifier))))))))
+      (function_definition_statement_end
+        (end_keyword)
+        (function_keyword)))))
+
 ==================
 Multiline string continuation
 ==================
