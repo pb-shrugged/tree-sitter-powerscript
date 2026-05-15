@@ -3362,8 +3362,13 @@
                 "type": "SEQ",
                 "members": [
                   {
-                    "type": "SYMBOL",
-                    "name": "else_keyword"
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_inline_else_marker"
+                    },
+                    "named": true,
+                    "value": "else_keyword"
                   },
                   {
                     "type": "ALIAS",
@@ -9143,6 +9148,10 @@
     {
       "type": "SYMBOL",
       "name": "_inline_then_marker"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_inline_else_marker"
     },
     {
       "type": "SYMBOL",

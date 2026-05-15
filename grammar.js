@@ -41,6 +41,7 @@ export default grammar({
 
   externals: $ => [
     $._inline_then_marker,
+    $._inline_else_marker,
     $._inline_return_value_marker,
   ],
 
@@ -627,7 +628,7 @@ export default grammar({
       $.then_keyword,
       $._inline_then_marker,
       alias($.inline_if_case_statement, $.if_case_statement),
-      optional(seq($.else_keyword, alias($.inline_if_case_statement, $.else_case_statement))),
+      optional(seq(alias($._inline_else_marker, $.else_keyword), alias($.inline_if_case_statement, $.else_case_statement))),
       optional($.statement_separation),
     )),
 
